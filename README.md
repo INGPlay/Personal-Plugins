@@ -51,22 +51,22 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 
 ```bash
 # 1. Add this marketplace (local path, GitHub repo, or git URL)
-/plugin marketplace add ./Code-Skill
-# or from GitHub once pushed:  /plugin marketplace add <owner>/Code-Skill
+/plugin marketplace add ./Personal-Plugins
+# or from GitHub once pushed:  /plugin marketplace add <owner>/Personal-Plugins
 
 # 2. Install a plugin from it
-/plugin install example-pack@code-skill
+/plugin install common-package@Personal-Plugins
 
 # Manage
 /plugin marketplace list
-/plugin marketplace update code-skill
+/plugin marketplace update Personal-Plugins
 ```
 
-`code-skill` is the marketplace `name` (from `marketplace.json`); `example-pack`
-is a plugin `name`. Install uses `<plugin>@<marketplace>`.
+`Personal-Plugins` is the marketplace `name` (from `marketplace.json`);
+`common-package` is a plugin `name`. Install uses `<plugin>@<marketplace>`.
 
-`code-skill`은 마켓플레이스 `name`(`marketplace.json` 기준)이고, `example-pack`은
-플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
+`Personal-Plugins`는 마켓플레이스 `name`(`marketplace.json` 기준)이고,
+`common-package`는 플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
 
 ---
 

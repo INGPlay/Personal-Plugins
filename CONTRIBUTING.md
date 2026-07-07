@@ -31,8 +31,8 @@ How to add components to this marketplace.
    }
    ```
 
-4. Test locally: `/plugin marketplace update code-skill` then
-   `/plugin install my-plugin@code-skill`.
+4. Test locally: `/plugin marketplace update Personal-Plugins` then
+   `/plugin install my-plugin@Personal-Plugins`.
 
 ---
 
