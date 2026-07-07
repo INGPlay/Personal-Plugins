@@ -10,19 +10,6 @@
   },
   "plugins": [
     {
-      "name": "example-pack",
-      "source": "example-pack",
-      "description": "Starter pack demonstrating a skill, a subagent, a hook, and an MCP server. Copy it to create your own plugin.",
-      "version": "0.1.0",
-      "author": {
-        "name": "atker14",
-        "email": "atker14@gmail.com"
-      },
-      "license": "MIT",
-      "keywords": ["example", "starter", "template"],
-      "category": "productivity"
-    },
-    {
       "name": "common-package",
       "source": "common-package",
       "description": "자주 쓰는 공통 스킬 모음. README 작성/갱신 스킬(readme-writer)과 커밋 스킬(commit)을 포함한다. A bundle of commonly used skills; includes the readme-writer and commit skills.",
