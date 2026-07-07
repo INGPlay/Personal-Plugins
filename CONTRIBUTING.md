@@ -10,7 +10,7 @@ How to add components to this marketplace.
 1. Copy the template:
 
    ```bash
-   cp -r plugins/example-pack plugins/my-plugin
+   cp -r plugins/common-package plugins/my-plugin
    ```
 
 2. Edit `plugins/my-plugin/.claude-plugin/plugin.json`:
@@ -33,6 +33,57 @@ How to add components to this marketplace.
 
 4. Test locally: `/plugin marketplace update Personal-Plugins` then
    `/plugin install my-plugin@Personal-Plugins`.
+
+---
+
+## Add a meta-plugin (bundle) / 메타 플러그인(묶음) 추가
+
+A **meta-plugin** ships no components of its own — it just declares
+`dependencies` on other plugins so installing it pulls them all in. Use this to
+group external plugins into a single install (see `developer-package`).
+
+메타 플러그인은 자체 구성요소 없이 `dependencies`로 다른 플러그인들을 선언해,
+설치 한 번으로 여러 플러그인을 함께 끌어옵니다. 외부 플러그인을 하나로 묶을 때
+사용합니다.
+
+1. Create `plugins/<name>/.claude-plugin/plugin.json` with a `dependencies`
+   array. Each entry is a plugin name, or an object when it lives in another
+   marketplace or needs a version range:
+
+   ```json
+   {
+     "name": "developer-package",
+     "version": "0.1.0",
+     "description": "...",
+     "dependencies": [
+       { "name": "feature-dev", "marketplace": "claude-plugins-official" },
+       { "name": "secrets-vault", "version": "~2.1.0" }
+     ]
+   }
+   ```
+
+   - Bare string (`"audit-logger"`) — same marketplace, latest version.
+   - `marketplace` — resolve the dependency in a **different** marketplace.
+   - `version` — a semver range (`~2.1.0`, `^2.0`, `>=1.4`, `=2.1.0`); omit to
+     track the latest.
+
+2. To depend on plugins from another marketplace, add that marketplace to
+   `allowCrossMarketplaceDependenciesOn` at the **root** of
+   `.claude-plugin/marketplace.json`. Without it, cross-marketplace deps fail to
+   auto-install:
+
+   ```json
+   "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"]
+   ```
+
+3. Register the meta-plugin in `marketplace.json` like any other plugin (step 3
+   above).
+
+- The installer must already have the dependency's marketplace added
+  (`claude plugin marketplace add …`); otherwise deps surface as
+  `dependency-unsatisfied`. 설치하는 쪽에 의존성의 마켓플레이스가 미리 추가돼
+  있어야 합니다.
+- `claude plugin prune` removes auto-installed deps once no plugin needs them.
 
 ---
 

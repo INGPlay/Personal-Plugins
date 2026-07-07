@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "developer-package",
+  "displayName": "Developer Package",
+  "version": "0.4.0",
+  "description": "개발 워크플로 메타 플러그인. 외부 플러그인(feature-dev, context7, security-guidance, serena, playwright)을 한 번에 설치한다. A meta-plugin that bundles the feature-dev, context7, security-guidance, serena, and playwright plugins.",
+  "author": {
+    "name": "atker14",
+    "email": "atker14@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["meta", "bundle", "developer", "개발", "feature-dev", "context7", "security", "serena", "playwright"],
+  "dependencies": [
+    { "name": "feature-dev", "marketplace": "claude-plugins-official" },
+    { "name": "context7", "marketplace": "claude-plugins-official" },
+    { "name": "security-guidance", "marketplace": "claude-plugins-official" },
+    { "name": "serena", "marketplace": "claude-plugins-official" },
+    { "name": "playwright", "marketplace": "claude-plugins-official" }
+  ]
+}
