@@ -22,7 +22,7 @@
 
 ## Working here / 작업 규칙
 
-- When adding a plugin, follow `CONTRIBUTING.md`: copy `plugins/example-pack`,
+- When adding a plugin, follow `CONTRIBUTING.md`: copy `plugins/common-package`,
   edit its manifests, then register it in `.claude-plugin/marketplace.json`.
 - Keep `marketplace.json` in sync with the actual `plugins/` directories — every
   plugin directory must have a matching entry, and vice versa.

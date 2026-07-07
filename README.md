@@ -67,6 +67,27 @@ Once installed, invoke a skill in natural language (e.g. "write a README",
 "commit this") or via its slash command
 (`/common-package:readme-writer`, `/common-package:commit`).
 
+이 플러그인은 `claude-md-management` 플러그인도 의존성으로 함께 설치합니다.
+This plugin also installs the `claude-md-management` plugin as a dependency.
+
+### `developer-package`
+
+개발 워크플로 메타 플러그인. 자체 스킬은 없고, 아래 외부 플러그인들을 의존성으로
+묶어 한 번에 설치합니다. A meta-plugin with no skills of its own; it bundles the
+following external plugins as dependencies and installs them together.
+
+| Plugin | 마켓플레이스 / Marketplace |
+| --- | --- |
+| `feature-dev` | `claude-plugins-official` |
+| `context7` | `claude-plugins-official` |
+| `security-guidance` | `claude-plugins-official` |
+| `serena` | `claude-plugins-official` |
+| `playwright` | `claude-plugins-official` |
+
+의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
+해결됩니다. Dependencies resolve automatically once the `claude-plugins-official`
+marketplace has been added.
+
 ---
 
 ## Install / 설치
