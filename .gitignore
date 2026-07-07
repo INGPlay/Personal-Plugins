@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs / temp
+*.log
+tmp/
+.tmp/
+
+# Local Claude Code state (do not commit installed/runtime data)
+.claude/
