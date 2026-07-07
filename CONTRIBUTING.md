@@ -19,13 +19,13 @@ How to add components to this marketplace.
      those keys and delete the corresponding files.
 
 3. Register it in `.claude-plugin/marketplace.json` — add an entry to the
-   `plugins` array. `source` is the folder name (relative to `metadata.pluginRoot`,
-   which is `./plugins`):
+   `plugins` array. `source` is an explicit relative path from the marketplace
+   root and **must start with `./`**:
 
    ```json
    {
      "name": "my-plugin",
-     "source": "my-plugin",
+     "source": "./plugins/my-plugin",
      "description": "What it does.",
      "version": "0.1.0"
    }
