@@ -22,8 +22,9 @@
 
 ## Working here / 작업 규칙
 
-- When adding a plugin, follow `CONTRIBUTING.md`: copy `plugins/common-package`,
-  edit its manifests, then register it in `.claude-plugin/marketplace.json`.
+- When adding a plugin, follow `CONTRIBUTING.md`: copy an existing plugin under
+  `plugins/` (e.g. `plugins/developer-package`), edit its manifests, then register
+  it in `.claude-plugin/marketplace.json`.
 - Keep `marketplace.json` in sync with the actual `plugins/` directories — every
   plugin directory must have a matching entry, and vice versa.
 - Documentation is bilingual (English / 한국어). Match that style in READMEs and

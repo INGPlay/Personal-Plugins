@@ -19,12 +19,15 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # Marketplace manifest — lists every plugin
 ├── plugins/
-│   └── common-package/            # A plugin
+│   └── developer-package/          # A plugin (skills + bundled dependencies)
 │       ├── .claude-plugin/
 │       │   └── plugin.json         # Plugin manifest
 │       └── skills/                # Skills (auto-discovered)
+│           ├── feature-development/
+│           ├── bug-fix/
+│           ├── refactoring/
+│           ├── codebase-exploration/
 │           ├── commit/
-│           │   └── SKILL.md
 │           └── readme-writer/
 │               ├── SKILL.md
 │               └── assets/
@@ -35,11 +38,12 @@ Personal-Plugins/
 ```
 
 A plugin may also carry `agents/` (auto-discovered subagents), `hooks/`
-(event hooks), and `.mcp.json` (MCP servers). The current plugin ships skills
-only.
+(event hooks), and `.mcp.json` (MCP servers). The current plugin ships skills and
+declares `dependencies` on other plugins.
 
 플러그인은 `agents/`(자동 검색되는 서브에이전트), `hooks/`(이벤트 훅),
-`.mcp.json`(MCP 서버)도 담을 수 있습니다. 현재 플러그인은 스킬만 포함합니다.
+`.mcp.json`(MCP 서버)도 담을 수 있습니다. 현재 플러그인은 스킬을 포함하고
+`dependencies`로 다른 플러그인들을 함께 설치합니다.
 
 `skills/` and `agents/` are **auto-discovered** at the plugin root. `hooks/` and
 `.mcp.json` are declared explicitly in each plugin's `plugin.json`.
@@ -51,30 +55,36 @@ only.
 
 ## Available plugins / 제공 플러그인
 
-### `common-package`
-
-자주 쓰는 공통 스킬 모음. A bundle of commonly used skills.
-
-| Skill | 설명 (한국어) | Description (English) |
-| --- | --- | --- |
-| `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. | Reads the repo and drafts/updates a fact-based `README.md`. |
-| `commit` | 변경사항을 conventional commit 형식(`type: 한국어 설명`)으로 커밋한다. | Commits changes as `type: <Korean summary>` conventional commits. |
-
-각 스킬은 설치 후 자연어(예: "README 만들어줘", "커밋해줘") 또는 슬래시 명령
-(`/common-package:readme-writer`, `/common-package:commit`)으로 실행합니다.
-
-Once installed, invoke a skill in natural language (e.g. "write a README",
-"commit this") or via its slash command
-(`/common-package:readme-writer`, `/common-package:commit`).
-
-이 플러그인은 `claude-md-management` 플러그인도 의존성으로 함께 설치합니다.
-This plugin also installs the `claude-md-management` plugin as a dependency.
-
 ### `developer-package`
 
-개발 워크플로 메타 플러그인. 자체 스킬은 없고, 아래 외부 플러그인들을 의존성으로
-묶어 한 번에 설치합니다. A meta-plugin with no skills of its own; it bundles the
-following external plugins as dependencies and installs them together.
+개발 워크플로 패키지. 아래 스킬을 직접 제공하고, 그 절차가 활용하는 외부
+플러그인들을 의존성으로 함께 설치합니다. Ships the skills below and bundles the
+external plugins they lean on as dependencies.
+
+절차 스킬 / Workflow skills:
+
+| 스킬 / Skill | 설명 / Description |
+| --- | --- |
+| `feature-development` | 기능 개발 절차: 탐색 → 작성 → 검증 → 리뷰 → 반복 → 커밋. Feature workflow: explore → write → verify → review → loop → commit. |
+| `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증 → 리뷰 → 반복 → 커밋. Bug workflow: explore → reproduce → fix → verify → review → loop → commit. |
+| `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인 → 리뷰 → 커밋. Refactor workflow: explore → safety net → change → prove-unchanged → review → commit. |
+| `codebase-exploration` | 코드 수정 없이 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계. Understand structure/flow/impact without editing; the shared first step. |
+
+보조 스킬 / Supporting skills:
+
+| 스킬 / Skill | 설명 / Description |
+| --- | --- |
+| `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 마지막 단계에서 사용. Commits changes as `type: <Korean summary>`; used as the final step of the workflows above. |
+| `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. Reads the repo and drafts/updates a fact-based `README.md`. |
+
+각 스킬은 설치 후 자연어(예: "기능 추가해줘", "버그 고쳐줘", "커밋해줘") 또는
+슬래시 명령(`/developer-package:feature-development` 등)으로 실행합니다.
+
+Once installed, invoke a skill in natural language (e.g. "add a feature", "fix
+this bug", "commit this") or via its slash command
+(`/developer-package:feature-development`, etc.).
+
+묶어 함께 설치되는 외부 플러그인 / Bundled external plugins:
 
 | Plugin | 마켓플레이스 / Marketplace |
 | --- | --- |
@@ -83,6 +93,7 @@ following external plugins as dependencies and installs them together.
 | `security-guidance` | `claude-plugins-official` |
 | `serena` | `claude-plugins-official` |
 | `playwright` | `claude-plugins-official` |
+| `claude-md-management` | `claude-plugins-official` |
 
 의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
 해결됩니다. Dependencies resolve automatically once the `claude-plugins-official`
@@ -102,7 +113,7 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 # or from a local clone:  /plugin marketplace add ./Personal-Plugins
 
 # 2. Install a plugin from it
-/plugin install common-package@Personal-Plugins
+/plugin install developer-package@Personal-Plugins
 
 # Manage
 /plugin marketplace list
@@ -110,19 +121,19 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 ```
 
 `Personal-Plugins` is the marketplace `name` (from `marketplace.json`);
-`common-package` is a plugin `name`. Install uses `<plugin>@<marketplace>`.
+`developer-package` is a plugin `name`. Install uses `<plugin>@<marketplace>`.
 
 `Personal-Plugins`는 마켓플레이스 `name`(`marketplace.json` 기준)이고,
-`common-package`는 플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
+`developer-package`는 플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
 
 ---
 
 ## Adding your own / 직접 추가하기
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: copy `plugins/common-package`,
-rename it, edit the manifests, then register the new plugin in
+See [CONTRIBUTING.md](CONTRIBUTING.md). In short: copy an existing plugin under
+`plugins/`, rename it, edit the manifests, then register the new plugin in
 `.claude-plugin/marketplace.json`.
 
-자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 요약: `plugins/common-package`을
-복사해 이름을 바꾸고, 매니페스트를 수정한 뒤, `.claude-plugin/marketplace.json`에
-새 플러그인을 등록합니다.
+자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 요약: `plugins/` 아래
+기존 플러그인을 복사해 이름을 바꾸고, 매니페스트를 수정한 뒤,
+`.claude-plugin/marketplace.json`에 새 플러그인을 등록합니다.
