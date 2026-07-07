@@ -1,4 +1,4 @@
-# Code-Skill
+# Personal-Plugins
 
 My personal toolbox for Claude Code. Whenever I build a tool I want to reuse — a
 skill, a subagent, a hook, an MCP server — I drop it here so it's ready the next
@@ -15,7 +15,7 @@ MCP 서버)를 만들 때마다 여기에 모아 두어 필요할 때 바로 꺼
 ## Repository layout / 저장소 구조
 
 ```
-Code-Skill/
+Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace manifest — lists every plugin
 ├── plugins/
@@ -50,9 +50,9 @@ Point Claude Code at this marketplace, then install a plugin from it.
 Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러그인을 설치합니다.
 
 ```bash
-# 1. Add this marketplace (local path, GitHub repo, or git URL)
-/plugin marketplace add ./Personal-Plugins
-# or from GitHub once pushed:  /plugin marketplace add <owner>/Personal-Plugins
+# 1. Add this marketplace (GitHub repo, git URL, or local path)
+/plugin marketplace add INGPlay/Personal-Plugins
+# or from a local clone:  /plugin marketplace add ./Personal-Plugins
 
 # 2. Install a plugin from it
 /plugin install common-package@Personal-Plugins
