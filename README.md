@@ -17,29 +17,55 @@ MCP 서버)를 만들 때마다 여기에 모아 두어 필요할 때 바로 꺼
 ```
 Personal-Plugins/
 ├── .claude-plugin/
-│   └── marketplace.json          # Marketplace manifest — lists every plugin
+│   └── marketplace.json           # Marketplace manifest — lists every plugin
 ├── plugins/
-│   └── example-pack/             # A plugin (copy this to make your own)
+│   └── common-package/            # A plugin
 │       ├── .claude-plugin/
-│       │   └── plugin.json        # Plugin manifest
-│       ├── skills/
-│       │   └── hello-skill/
-│       │       └── SKILL.md        # A skill (auto-discovered)
-│       ├── agents/
-│       │   └── example-reviewer.md # A subagent (auto-discovered)
-│       ├── hooks/
-│       │   └── hooks.json          # Event hooks (declared in plugin.json)
-│       └── .mcp.json               # MCP servers (declared in plugin.json)
-├── CONTRIBUTING.md               # How to add a skill / agent / plugin
+│       │   └── plugin.json         # Plugin manifest
+│       └── skills/                # Skills (auto-discovered)
+│           ├── commit/
+│           │   └── SKILL.md
+│           └── readme-writer/
+│               ├── SKILL.md
+│               └── assets/
+│                   └── README_template.md
+├── CONTRIBUTING.md                # How to add a skill / agent / plugin
 ├── README.md
 └── .gitignore
 ```
+
+A plugin may also carry `agents/` (auto-discovered subagents), `hooks/`
+(event hooks), and `.mcp.json` (MCP servers). The current plugin ships skills
+only.
+
+플러그인은 `agents/`(자동 검색되는 서브에이전트), `hooks/`(이벤트 훅),
+`.mcp.json`(MCP 서버)도 담을 수 있습니다. 현재 플러그인은 스킬만 포함합니다.
 
 `skills/` and `agents/` are **auto-discovered** at the plugin root. `hooks/` and
 `.mcp.json` are declared explicitly in each plugin's `plugin.json`.
 
 `skills/`와 `agents/`는 플러그인 루트에서 **자동 검색**됩니다. `hooks/`와
 `.mcp.json`은 각 플러그인의 `plugin.json`에 명시적으로 선언합니다.
+
+---
+
+## Available plugins / 제공 플러그인
+
+### `common-package`
+
+자주 쓰는 공통 스킬 모음. A bundle of commonly used skills.
+
+| Skill | 설명 (한국어) | Description (English) |
+| --- | --- | --- |
+| `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. | Reads the repo and drafts/updates a fact-based `README.md`. |
+| `commit` | 변경사항을 conventional commit 형식(`type: 한국어 설명`)으로 커밋한다. | Commits changes as `type: <Korean summary>` conventional commits. |
+
+각 스킬은 설치 후 자연어(예: "README 만들어줘", "커밋해줘") 또는 슬래시 명령
+(`/common-package:readme-writer`, `/common-package:commit`)으로 실행합니다.
+
+Once installed, invoke a skill in natural language (e.g. "write a README",
+"commit this") or via its slash command
+(`/common-package:readme-writer`, `/common-package:commit`).
 
 ---
 
@@ -72,10 +98,10 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 
 ## Adding your own / 직접 추가하기
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: copy `plugins/example-pack`,
+See [CONTRIBUTING.md](CONTRIBUTING.md). In short: copy `plugins/common-package`,
 rename it, edit the manifests, then register the new plugin in
 `.claude-plugin/marketplace.json`.
 
-자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 요약: `plugins/example-pack`을
+자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 요약: `plugins/common-package`을
 복사해 이름을 바꾸고, 매니페스트를 수정한 뒤, `.claude-plugin/marketplace.json`에
 새 플러그인을 등록합니다.
