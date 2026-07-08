@@ -10,7 +10,7 @@ How to add components to this marketplace.
 1. Copy the template:
 
    ```bash
-   cp -r plugins/developer-package plugins/my-plugin
+   cp -r plugins/dev-pack plugins/my-plugin
    ```
 
 2. Edit `plugins/my-plugin/.claude-plugin/plugin.json`:
@@ -40,13 +40,13 @@ How to add components to this marketplace.
 
 A **meta-plugin** declares `dependencies` on other plugins so installing it
 pulls them all in. Use this to group external plugins into a single install. A
-plugin can do this *and* ship its own skills/agents — `developer-package`
+plugin can do this *and* ship its own skills/agents — `dev-pack`
 bundles external plugins **and** carries workflow skills.
 
 메타 플러그인은 `dependencies`로 다른 플러그인들을 선언해, 설치 한 번으로 여러
 플러그인을 함께 끌어옵니다. 외부 플러그인을 하나로 묶을 때 사용합니다. 한
 플러그인이 이 방식과 자체 스킬/에이전트를 **함께** 가질 수 있습니다 —
-`developer-package`가 외부 플러그인을 묶으면서 워크플로 스킬도 함께 제공합니다.
+`dev-pack`가 외부 플러그인을 묶으면서 워크플로 스킬도 함께 제공합니다.
 
 1. Create `plugins/<name>/.claude-plugin/plugin.json` with a `dependencies`
    array. Each entry is a plugin name, or an object when it lives in another

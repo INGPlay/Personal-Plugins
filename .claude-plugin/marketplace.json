@@ -11,8 +11,8 @@
   "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
     {
-      "name": "developer-package",
-      "source": "./plugins/developer-package",
+      "name": "dev-pack",
+      "source": "./plugins/dev-pack",
       "description": "개발 워크플로 패키지. 기능 개발·버그 수정·리팩터링·코드베이스 탐색 절차 스킬과 커밋·README 작성 스킬을 제공하고, feature-dev, context7, security-guidance, serena, playwright, claude-md-management를 함께 설치한다. Ships feature-development, bug-fix, refactoring, codebase-exploration, commit, and readme-writer skills, and bundles the feature-dev, context7, security-guidance, serena, playwright, and claude-md-management plugins.",
       "version": "0.6.0",
       "author": {

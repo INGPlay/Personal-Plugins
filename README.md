@@ -19,7 +19,7 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # Marketplace manifest — lists every plugin
 ├── plugins/
-│   └── developer-package/          # A plugin (skills + bundled dependencies)
+│   └── dev-pack/                  # A plugin (skills + bundled dependencies)
 │       ├── .claude-plugin/
 │       │   └── plugin.json         # Plugin manifest
 │       └── skills/                # Skills (auto-discovered)
@@ -55,7 +55,7 @@ declares `dependencies` on other plugins.
 
 ## Available plugins / 제공 플러그인
 
-### `developer-package`
+### `dev-pack`
 
 개발 워크플로 패키지. 아래 스킬을 직접 제공하고, 그 절차가 활용하는 외부
 플러그인들을 의존성으로 함께 설치합니다. Ships the skills below and bundles the
@@ -78,11 +78,11 @@ external plugins they lean on as dependencies.
 | `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. Reads the repo and drafts/updates a fact-based `README.md`. |
 
 각 스킬은 설치 후 자연어(예: "기능 추가해줘", "버그 고쳐줘", "커밋해줘") 또는
-슬래시 명령(`/developer-package:feature-development` 등)으로 실행합니다.
+슬래시 명령(`/dev-pack:feature-development` 등)으로 실행합니다.
 
 Once installed, invoke a skill in natural language (e.g. "add a feature", "fix
 this bug", "commit this") or via its slash command
-(`/developer-package:feature-development`, etc.).
+(`/dev-pack:feature-development`, etc.).
 
 묶어 함께 설치되는 외부 플러그인 / Bundled external plugins:
 
@@ -113,7 +113,7 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 # or from a local clone:  /plugin marketplace add ./Personal-Plugins
 
 # 2. Install a plugin from it
-/plugin install developer-package@Personal-Plugins
+/plugin install dev-pack@Personal-Plugins
 
 # Manage
 /plugin marketplace list
@@ -121,10 +121,10 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 ```
 
 `Personal-Plugins` is the marketplace `name` (from `marketplace.json`);
-`developer-package` is a plugin `name`. Install uses `<plugin>@<marketplace>`.
+`dev-pack` is a plugin `name`. Install uses `<plugin>@<marketplace>`.
 
 `Personal-Plugins`는 마켓플레이스 `name`(`marketplace.json` 기준)이고,
-`developer-package`는 플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
+`dev-pack`는 플러그인 `name`입니다. 설치는 `<plugin>@<marketplace>` 형식을 사용합니다.
 
 ---
 
