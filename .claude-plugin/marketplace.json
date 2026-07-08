@@ -8,7 +8,7 @@
   "metadata": {
     "pluginRoot": "./plugins"
   },
-  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
+  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official", "openai-codex"],
   "plugins": [
     {
       "name": "dev-pack",
@@ -21,6 +21,19 @@
       },
       "license": "MIT",
       "keywords": ["developer", "개발", "workflow", "워크플로", "기능개발", "버그수정", "리팩터링", "탐색", "commit", "커밋", "readme", "feature-dev", "context7", "security", "serena", "playwright", "claude-md"],
+      "category": "productivity"
+    },
+    {
+      "name": "dlc",
+      "source": "./plugins/dlc",
+      "description": "외부 플러그인을 묶는 메타 플러그인. OpenAI의 codex 플러그인(codex@openai-codex)을 의존성으로 함께 설치한다. Meta-plugin that bundles external plugins; installing it pulls in OpenAI's codex plugin (codex@openai-codex).",
+      "version": "0.1.0",
+      "author": {
+        "name": "atker14",
+        "email": "atker14@gmail.com"
+      },
+      "license": "MIT",
+      "keywords": ["dlc", "codex", "openai", "meta", "bundle", "묶음", "메타"],
       "category": "productivity"
     }
   ]

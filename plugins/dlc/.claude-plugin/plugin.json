@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "dlc",
+  "displayName": "DLC",
+  "version": "0.1.0",
+  "description": "외부 플러그인을 묶는 메타 플러그인. OpenAI의 codex 플러그인(codex@openai-codex)을 의존성으로 함께 설치한다. Meta-plugin that bundles external plugins; installing it pulls in OpenAI's codex plugin (codex@openai-codex).",
+  "author": {
+    "name": "atker14",
+    "email": "atker14@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["dlc", "codex", "openai", "meta", "bundle", "묶음", "메타"],
+  "dependencies": [
+    { "name": "codex", "marketplace": "openai-codex" }
+  ]
+}

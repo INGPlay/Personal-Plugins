@@ -19,19 +19,22 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # Marketplace manifest — lists every plugin
 ├── plugins/
-│   └── dev-pack/                  # A plugin (skills + bundled dependencies)
-│       ├── .claude-plugin/
-│       │   └── plugin.json         # Plugin manifest
-│       └── skills/                # Skills (auto-discovered)
-│           ├── feature-development/
-│           ├── bug-fix/
-│           ├── refactoring/
-│           ├── codebase-exploration/
-│           ├── commit/
-│           └── readme-writer/
-│               ├── SKILL.md
-│               └── assets/
-│                   └── README_template.md
+│   ├── dev-pack/                  # A plugin (skills + bundled dependencies)
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json         # Plugin manifest
+│   │   └── skills/                # Skills (auto-discovered)
+│   │       ├── feature-development/
+│   │       ├── bug-fix/
+│   │       ├── refactoring/
+│   │       ├── codebase-exploration/
+│   │       ├── commit/
+│   │       └── readme-writer/
+│   │           ├── SKILL.md
+│   │           └── assets/
+│   │               └── README_template.md
+│   └── dlc/                       # A meta-plugin (bundles the codex plugin)
+│       └── .claude-plugin/
+│           └── plugin.json         # Plugin manifest (dependencies only)
 ├── CONTRIBUTING.md                # How to add a skill / agent / plugin
 ├── README.md
 └── .gitignore
@@ -98,6 +101,23 @@ this bug", "commit this") or via its slash command
 의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
 해결됩니다. Dependencies resolve automatically once the `claude-plugins-official`
 marketplace has been added.
+
+### `dlc`
+
+OpenAI의 `codex` 플러그인을 묶는 메타 플러그인. 자체 스킬은 없고, 설치하면
+`codex@openai-codex`를 의존성으로 함께 끌어옵니다. A meta-plugin that bundles
+OpenAI's `codex` plugin — it ships no skills of its own, and installing it pulls
+in `codex@openai-codex` as a dependency.
+
+묶어 함께 설치되는 외부 플러그인 / Bundled external plugins:
+
+| Plugin | 마켓플레이스 / Marketplace |
+| --- | --- |
+| `codex` | `openai-codex` |
+
+설치 전에 codex 마켓플레이스를 먼저 추가해야 의존성이 해결됩니다
+(`/plugin marketplace add openai/codex-plugin-cc`). Add the codex marketplace
+first so the dependency resolves.
 
 ---
 
