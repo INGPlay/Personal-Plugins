@@ -38,8 +38,10 @@ Personal-Plugins/
 │   └── dlc/                       # A meta-plugin (bundles the codex plugin)
 │       └── .claude-plugin/
 │           └── plugin.json         # Plugin manifest (dependencies only)
+├── CLAUDE.md                      # Project instructions for Claude Code
 ├── CONTRIBUTING.md                # How to add a skill / agent / plugin
 ├── README.md
+├── .gitattributes
 └── .gitignore
 ```
 
