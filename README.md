@@ -19,7 +19,7 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # Marketplace manifest — lists every plugin
 ├── plugins/
-│   ├── dev-pack/                  # A plugin (skills + bundled dependencies)
+│   ├── dev-pack/                  # A plugin (skills only, no dependencies)
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json         # Plugin manifest
 │   │   └── skills/                # Skills (auto-discovered)
@@ -32,6 +32,9 @@ Personal-Plugins/
 │   │           ├── SKILL.md
 │   │           └── assets/
 │   │               └── README_template.md
+│   ├── dev-pack-bundle/           # A meta-plugin (dev-pack + companion plugins; no skills)
+│   │   └── .claude-plugin/
+│   │       └── plugin.json         # Plugin manifest (dependencies only)
 │   └── dlc/                       # A meta-plugin (bundles the codex plugin)
 │       └── .claude-plugin/
 │           └── plugin.json         # Plugin manifest (dependencies only)
@@ -41,12 +44,29 @@ Personal-Plugins/
 ```
 
 A plugin may also carry `agents/` (auto-discovered subagents), `hooks/`
-(event hooks), and `.mcp.json` (MCP servers). The current plugin ships skills and
-declares `dependencies` on other plugins.
+(event hooks), and `.mcp.json` (MCP servers). `dev-pack` ships skills only; the
+skill-less meta-plugins `dev-pack-bundle` and `dlc` declare `dependencies` on
+other plugins.
+
+> **Why the split.** A plugin that ships skills must **not** also declare
+> `dependencies`: Claude Desktop (CCD/SDK) then silently drops that plugin's own
+> skills (the CLI is unaffected). So skills and dependency-bundling live in
+> separate plugins — `dev-pack` (skills, no deps) never loses its skills, and the
+> skill-less meta-plugin `dev-pack-bundle` carries the `dependencies` that pull
+> in `dev-pack` plus its companion plugins. `dlc` follows the same pattern for
+> `codex`.
 
 플러그인은 `agents/`(자동 검색되는 서브에이전트), `hooks/`(이벤트 훅),
-`.mcp.json`(MCP 서버)도 담을 수 있습니다. 현재 플러그인은 스킬을 포함하고
-`dependencies`로 다른 플러그인들을 함께 설치합니다.
+`.mcp.json`(MCP 서버)도 담을 수 있습니다. `dev-pack`은 스킬만 포함하고, 스킬이
+없는 메타 플러그인 `dev-pack-bundle`과 `dlc`가 `dependencies`로 다른 플러그인을
+함께 설치합니다.
+
+> **분리한 이유.** 스킬을 포함하는 플러그인은 `dependencies`를 **함께 선언하면 안
+> 됩니다**. 그러면 Claude Desktop(CCD/SDK)이 그 플러그인의 자기 스킬을 조용히
+> 드롭합니다(CLI는 무관). 그래서 스킬과 의존성 번들링을 별도 플러그인으로
+> 나눕니다 — `dev-pack`(스킬만, deps 없음)은 스킬을 잃지 않고, 스킬이 없는 메타
+> 플러그인 `dev-pack-bundle`이 `dev-pack`과 동반 플러그인을 끌어오는
+> `dependencies`를 담당합니다. `dlc`도 `codex`에 대해 같은 패턴을 씁니다.
 
 `skills/` and `agents/` are **auto-discovered** at the plugin root. `hooks/` and
 `.mcp.json` are declared explicitly in each plugin's `plugin.json`.
@@ -60,9 +80,11 @@ declares `dependencies` on other plugins.
 
 ### `dev-pack`
 
-개발 워크플로 패키지. 아래 스킬을 직접 제공하고, 그 절차가 활용하는 외부
-플러그인들을 의존성으로 함께 설치합니다. Ships the skills below and bundles the
-external plugins they lean on as dependencies.
+개발 워크플로 패키지. 아래 스킬을 직접 제공합니다 (`dependencies` 없음). 그 절차가
+활용하는 외부 플러그인까지 한 번에 받으려면 [`dev-pack-bundle`](#dev-pack-bundle)
+메타 플러그인을 설치하세요. Ships the skills below (and no `dependencies`). To also
+pull in the external plugins these workflows lean on, install the
+[`dev-pack-bundle`](#dev-pack-bundle) meta-plugin.
 
 절차 스킬 / Workflow skills:
 
@@ -87,10 +109,20 @@ Once installed, invoke a skill in natural language (e.g. "add a feature", "fix
 this bug", "commit this") or via its slash command
 (`/dev-pack:feature-development`, etc.).
 
-묶어 함께 설치되는 외부 플러그인 / Bundled external plugins:
+### `dev-pack-bundle`
+
+`dev-pack`과 그 절차가 활용하는 외부 플러그인을 한 번에 설치하는 메타 플러그인.
+자체 스킬은 없으므로 스킬 등록 버그의 영향을 받지 않습니다. 스킬만 원하면
+`dev-pack`을, 도구까지 전부 원하면 이 번들을 설치하세요. A meta-plugin that
+installs `dev-pack` plus the external plugins its workflows use. It ships no skills
+of its own, so it is unaffected by the skill-registration bug. Install `dev-pack`
+alone for just the skills, or this bundle to get the tools too.
+
+묶어 함께 설치되는 플러그인 / Bundled plugins:
 
 | Plugin | 마켓플레이스 / Marketplace |
 | --- | --- |
+| `dev-pack` | `Personal-Plugins` |
 | `feature-dev` | `claude-plugins-official` |
 | `context7` | `claude-plugins-official` |
 | `security-guidance` | `claude-plugins-official` |
@@ -98,9 +130,13 @@ this bug", "commit this") or via its slash command
 | `playwright` | `claude-plugins-official` |
 | `claude-md-management` | `claude-plugins-official` |
 
-의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
-해결됩니다. Dependencies resolve automatically once the `claude-plugins-official`
-marketplace has been added.
+외부 의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
+해결됩니다. The external dependencies resolve automatically once the
+`claude-plugins-official` marketplace has been added.
+
+```bash
+/plugin install dev-pack-bundle@Personal-Plugins
+```
 
 ### `dlc`
 
@@ -133,7 +169,8 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 # or from a local clone:  /plugin marketplace add ./Personal-Plugins
 
 # 2. Install a plugin from it
-/plugin install dev-pack@Personal-Plugins
+/plugin install dev-pack@Personal-Plugins          # skills only
+/plugin install dev-pack-bundle@Personal-Plugins   # skills + companion plugins
 
 # Manage
 /plugin marketplace list

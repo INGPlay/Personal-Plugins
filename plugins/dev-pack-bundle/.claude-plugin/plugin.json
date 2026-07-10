@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "dev-pack-bundle",
+  "displayName": "Dev Pack Bundle",
+  "version": "0.1.0",
+  "description": "dev-pack과 그 절차가 활용하는 외부 플러그인(feature-dev, context7, security-guidance, serena, playwright, claude-md-management)을 한 번에 설치하는 메타 플러그인. 자체 스킬은 없어 스킬 등록 버그의 영향을 받지 않는다. Meta-plugin that installs dev-pack plus the external plugins its workflows use; ships no skills of its own, so it is unaffected by the skill-registration bug.",
+  "author": {
+    "name": "atker14",
+    "email": "atker14@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["dev-pack", "bundle", "번들", "meta", "메타", "developer", "개발", "feature-dev", "context7", "security", "serena", "playwright", "claude-md"],
+  "dependencies": [
+    { "name": "dev-pack", "marketplace": "Personal-Plugins" },
+    { "name": "feature-dev", "marketplace": "claude-plugins-official" },
+    { "name": "context7", "marketplace": "claude-plugins-official" },
+    { "name": "security-guidance", "marketplace": "claude-plugins-official" },
+    { "name": "serena", "marketplace": "claude-plugins-official" },
+    { "name": "playwright", "marketplace": "claude-plugins-official" },
+    { "name": "claude-md-management", "marketplace": "claude-plugins-official" }
+  ]
+}
