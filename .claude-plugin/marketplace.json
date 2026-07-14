@@ -13,14 +13,14 @@
     {
       "name": "dev-pack",
       "source": "./plugins/dev-pack",
-      "description": "개발 워크플로 패키지. 기능 개발·버그 수정·리팩터링·코드베이스 탐색 절차 스킬과 커밋·README 작성 스킬을 제공한다. 절차가 활용하는 외부 플러그인까지 한 번에 설치하려면 dev-pack-bundle 메타 플러그인을 설치한다. Ships feature-development, bug-fix, refactoring, codebase-exploration, commit, and readme-writer skills; install the dev-pack-bundle meta-plugin to also pull in the external plugins these workflows lean on.",
-      "version": "0.6.1",
+      "description": "개발 워크플로 패키지. 기능 개발·버그 수정·리팩터링·코드베이스 탐색 절차 스킬과 커밋·README 작성·코드베이스 Q&A(ask) 스킬을 제공한다. 절차가 활용하는 외부 플러그인까지 한 번에 설치하려면 dev-pack-bundle 메타 플러그인을 설치한다. Ships feature-development, bug-fix, refactoring, codebase-exploration, commit, readme-writer, and ask skills; install the dev-pack-bundle meta-plugin to also pull in the external plugins these workflows lean on.",
+      "version": "0.7.0",
       "author": {
         "name": "atker14",
         "email": "atker14@gmail.com"
       },
       "license": "MIT",
-      "keywords": ["developer", "개발", "workflow", "워크플로", "기능개발", "버그수정", "리팩터링", "탐색", "commit", "커밋", "readme", "feature-dev", "context7", "security", "serena", "playwright", "claude-md"],
+      "keywords": ["developer", "개발", "workflow", "워크플로", "기능개발", "버그수정", "리팩터링", "탐색", "commit", "커밋", "readme", "ask", "질문", "qna", "feature-dev", "context7", "security", "serena", "playwright", "claude-md"],
       "category": "productivity"
     },
     {
