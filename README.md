@@ -188,6 +188,23 @@ Claude Code가 이 마켓플레이스를 바라보게 한 뒤, 여기서 플러�
 
 ---
 
+## Companion tools / 함께 쓰는 도구
+
+Tools I use alongside these plugins. They are **not** Claude Code plugins, so
+`/plugin install` does not reach them — each has its own setup. Optional:
+nothing in this repo depends on them.
+
+이 플러그인들과 함께 쓰는 도구입니다. Claude Code 플러그인이 **아니라서**
+`/plugin install`로는 설치되지 않고, 각자 별도 설치 절차를 따릅니다. 선택
+사항이며, 이 저장소의 어떤 스킬도 이 도구들에 의존하지 않습니다.
+
+| 도구 / Tool | 설명 / Description |
+| --- | --- |
+| [`rtk`](https://github.com/rtk-ai/rtk) | 개발 명령을 프록시해 토큰 사용을 줄이는 CLI. A CLI proxy that trims token usage on dev commands. |
+| [`serena`](https://github.com/oraios/serena) | 심볼 단위 코드 탐색·편집을 제공하는 MCP 서버. An MCP server for symbol-level code navigation and editing. |
+
+---
+
 ## Adding your own / 직접 추가하기
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). In short: copy an existing plugin under
