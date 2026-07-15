@@ -202,6 +202,7 @@ nothing in this repo depends on them.
 | --- | --- |
 | [`rtk`](https://github.com/rtk-ai/rtk) | 개발 명령을 프록시해 토큰 사용을 줄이는 CLI. A CLI proxy that trims token usage on dev commands. |
 | [`serena`](https://github.com/oraios/serena) | 심볼 단위 코드 탐색·편집을 제공하는 MCP 서버. An MCP server for symbol-level code navigation and editing. |
+| [`@ivotoby/openapi-mcp-server`](https://github.com/ivo-toby/mcp-openapi-server) | OpenAPI 명세를 MCP 도구로 노출해 REST API를 호출하게 해주는 MCP 서버. An MCP server that exposes OpenAPI specs as MCP tools so REST APIs can be called. |
 
 ---
 
