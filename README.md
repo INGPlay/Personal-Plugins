@@ -130,7 +130,6 @@ alone for just the skills, or this bundle to get the tools too.
 | `feature-dev` | `claude-plugins-official` |
 | `context7` | `claude-plugins-official` |
 | `security-guidance` | `claude-plugins-official` |
-| `serena` | `claude-plugins-official` |
 | `playwright` | `claude-plugins-official` |
 | `claude-md-management` | `claude-plugins-official` |
 
