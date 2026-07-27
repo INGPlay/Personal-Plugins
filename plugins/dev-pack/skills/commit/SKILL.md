@@ -1,6 +1,6 @@
 ---
 name: commit
-description: '변경사항을 conventional commit 형식(type: 한국어 설명)으로 커밋한다. 사용자가 "커밋해줘", "커밋", "커밋 만들어줘" 등 자연어로 요청하거나 /commit 슬래시 명령을 사용할 때 적용.'
+description: '변경사항을 conventional commit 형식(type: 한국어 설명)으로 커밋한다. 사용자가 "커밋해줘", "커밋", "커밋 만들어줘" 등 자연어로 요청하거나 /dev-pack:commit 슬래시 명령을 사용할 때 적용.'
 allowed-tools: Read, Glob, Grep, Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git log:*)
 ---
 
@@ -44,7 +44,7 @@ type: 한국어 요약
 변경사항이 서로 다른 목적/도메인을 섞고 있으면 하나의 커밋으로 묶지 말고 논리 단위로 나눠 여러 번 커밋한다 (예: 기능 추가 + 무관한 리팩터링, 서로 다른 도메인 수정). 파일 단위가 아니라 **논리적 변경 단위**로 나눈다 — 한 커밋에 여러 파일이 걸쳐도 하나의 목적이면 묶는다. 분리 여부와 각 커밋 그룹은 알아서 판단하고 진행하되, 각 커밋을 만들 때마다 무엇을 묶었는지 한 줄로 보고한다.
 
 ## 절차
-1. `git status`, `git diff`로 변경 내용을 확인한다.
+1. `git status`, `git diff`로 변경 내용을 확인한다. 이때 **이미 staged된 파일이 있는지 함께 본다** — 있으면 그 파일이 첫 커밋에 섞여 들어가므로, 이번 커밋 그룹에 속하지 않는 것이 staged 상태면 사용자에게 알리고 어떻게 할지 물어본다.
 2. 변경 파일 중 민감 파일(`.env`, `application-*.yml`, `application-*.properties`, `*credential*`, `*secret*`, 키/인증서 파일 등)이 포함되어 있으면 add하지 않고, 나머지 파일만으로 커밋을 진행할지 전체를 중단할지 사용자에게 물어보고 답을 받은 후 진행한다.
 3. 변경 내용을 논리 단위로 그룹핑하고, 그룹별로 적절한 type과 커밋 메시지(필요 시 본문 포함)를 작성한다.
 4. 그룹별 대상 파일만 명시적으로 `git add`한다 (`git add -A` 금지).
