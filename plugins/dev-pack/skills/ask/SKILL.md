@@ -9,7 +9,7 @@ description: 현재 코드베이스에 대한 단발 질문에 실제 코드를 
 
 ## 원칙
 
-- **코드를 수정하지 않는다.** 답변이 수정 요청으로 이어지면 해당 절차 스킬(`dev-pack:feature-development`·`dev-pack:feature-change`·`dev-pack:bug-fix`·`dev-pack:refactoring`)로 전환한다.
+- **코드를 수정하지 않는다.** 답변이 수정 요청으로 이어지면 해당 절차 스킬(`dev-pack:feature-develop`·`dev-pack:feature-change`·`dev-pack:bug-fix`·`dev-pack:refactoring`)로 전환한다.
 - **추측 대신 근거.** 기억이나 그럴듯함으로 답하지 않고, 도구로 실제 코드를 확인한 내용만 단정한다.
 - **질문 하나에 답하고 끝낸다.** 수정을 전제로 전체 지도를 그리는 탐색(영향도 분석·온보딩)은 `dev-pack:codebase-exploration` 절차를 따른다.
 

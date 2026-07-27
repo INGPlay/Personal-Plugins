@@ -1,5 +1,5 @@
 ---
-name: feature-development
+name: feature-develop
 description: 새 기능을 개발할 때의 표준 절차를 따른다. "기능 추가해줘", "이 기능 구현해줘", "~하는 기능 만들어줘", 새 화면·엔드포인트·명령·옵션 추가 등 코드베이스에 없던 동작을 새로 만드는 작업에 쓴다. 이미 있는 기능의 동작을 바꾸는 것이면 feature-change.
 ---
 

@@ -23,7 +23,7 @@ Personal-Plugins/
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json         # Plugin manifest
 │   │   └── skills/                # Skills (auto-discovered)
-│   │       ├── feature-development/
+│   │       ├── feature-develop/
 │   │       ├── feature-change/
 │   │       ├── bug-fix/
 │   │       ├── refactoring/
@@ -94,7 +94,7 @@ pull in the external plugins these workflows lean on, install the
 
 | 스킬 / Skill | 설명 / Description |
 | --- | --- |
-| `feature-development` | 기능 개발 절차: 탐색 → 작성 → 검증(반복) → 커밋 → 사용자 `/code-review`. Feature workflow: explore → write → verify (loop) → commit → hand off to your `/code-review`. |
+| `feature-develop` | 기능 개발 절차: 탐색 → 작성 → 검증(반복) → 커밋 → 사용자 `/code-review`. Feature workflow: explore → write → verify (loop) → commit → hand off to your `/code-review`. |
 | `feature-change` | 기능 변경 절차: 탐색·의존처 파악 → 호환성 결정 → 변경 → 테스트·문서 갱신 → 검증(반복) → 커밋 → 사용자 `/code-review`. Change workflow: explore dependents → decide compatibility → change → update tests/docs → verify (loop) → commit → hand off to your `/code-review`. |
 | `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증(반복) → 커밋 → 사용자 `/code-review`. Bug workflow: explore → reproduce → fix → verify (loop) → commit → hand off to your `/code-review`. |
 | `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → 사용자 `/code-review`. Refactor workflow: explore → safety net → change → prove-unchanged (loop) → commit → hand off to your `/code-review`. |
@@ -109,11 +109,11 @@ pull in the external plugins these workflows lean on, install the
 | `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. Reads the repo and drafts/updates a fact-based `README.md`. |
 
 각 스킬은 설치 후 자연어(예: "기능 추가해줘", "버그 고쳐줘", "커밋해줘") 또는
-슬래시 명령(`/dev-pack:feature-development` 등)으로 실행합니다.
+슬래시 명령(`/dev-pack:feature-develop` 등)으로 실행합니다.
 
 Once installed, invoke a skill in natural language (e.g. "add a feature", "fix
 this bug", "commit this") or via its slash command
-(`/dev-pack:feature-development`, etc.).
+(`/dev-pack:feature-develop`, etc.).
 
 ### `dev-pack-bundle`
 
