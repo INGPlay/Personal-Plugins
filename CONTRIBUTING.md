@@ -40,13 +40,17 @@ How to add components to this marketplace.
 
 A **meta-plugin** declares `dependencies` on other plugins so installing it
 pulls them all in. Use this to group external plugins into a single install. A
-plugin can do this *and* ship its own skills/agents — `dev-pack`
-bundles external plugins **and** carries workflow skills.
+plugin that ships skills must **not** also declare `dependencies` — Claude
+Desktop silently drops that plugin's own skills (see "Why the split" in
+`README.md`). Keep them apart: `dev-pack` carries the workflow skills, and the
+skill-less `dev-pack-bundle` carries the `dependencies`.
 
 메타 플러그인은 `dependencies`로 다른 플러그인들을 선언해, 설치 한 번으로 여러
-플러그인을 함께 끌어옵니다. 외부 플러그인을 하나로 묶을 때 사용합니다. 한
-플러그인이 이 방식과 자체 스킬/에이전트를 **함께** 가질 수 있습니다 —
-`dev-pack`가 외부 플러그인을 묶으면서 워크플로 스킬도 함께 제공합니다.
+플러그인을 함께 끌어옵니다. 외부 플러그인을 하나로 묶을 때 사용합니다. 스킬을
+포함하는 플러그인은 `dependencies`를 **함께 선언하면 안 됩니다** — Claude
+Desktop이 그 플러그인의 자기 스킬을 조용히 드롭합니다(`README.md`의 "분리한 이유"
+참고). 둘은 분리합니다 — `dev-pack`이 워크플로 스킬을, 스킬이 없는
+`dev-pack-bundle`이 `dependencies`를 담당합니다.
 
 1. Create `plugins/<name>/.claude-plugin/plugin.json` with a `dependencies`
    array. Each entry is a plugin name, or an object when it lives in another
