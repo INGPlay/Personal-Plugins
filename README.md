@@ -104,7 +104,7 @@ pull in the external plugins these workflows lean on, install the
 
 | 스킬 / Skill | 설명 / Description |
 | --- | --- |
-| `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 마지막 단계에서 사용. Commits changes as `type: <Korean summary>`; used as the final step of the workflows above. |
+| `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 커밋 단계에서 사용(그 뒤 사용자가 `/code-review`). Commits changes as `type: <Korean summary>`; used as the commit step of the workflows above, before you run `/code-review`. |
 | `ask` | 현재 코드베이스에 대한 질문에 코드를 근거(`file:line`)로 답변한다. 모호한 질문은 선택지로 좁힌 뒤 답하며, 코드는 수정하지 않는다. Answers questions about the current codebase with `file:line` evidence; narrows ambiguous questions via choices, read-only. |
 | `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. Reads the repo and drafts/updates a fact-based `README.md`. |
 
