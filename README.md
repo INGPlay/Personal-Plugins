@@ -129,7 +129,6 @@ alone for just the skills, or this bundle to get the tools too.
 | Plugin | 마켓플레이스 / Marketplace |
 | --- | --- |
 | `dev-pack` | `Personal-Plugins` |
-| `feature-dev` | `claude-plugins-official` |
 | `context7` | `claude-plugins-official` |
 | `security-guidance` | `claude-plugins-official` |
 | `playwright` | `claude-plugins-official` |

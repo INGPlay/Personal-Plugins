@@ -2,12 +2,12 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "dev-pack",
   "displayName": "Dev Pack",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "개발 워크플로 패키지. 기능 개발·기능 변경·버그 수정·리팩터링·코드베이스 탐색 절차 스킬과 커밋(commit)·README 작성(readme-writer)·코드베이스 Q&A(ask) 스킬을 제공한다. 절차가 활용하는 외부 플러그인까지 한 번에 설치하려면 dev-pack-bundle 메타 플러그인을 설치한다. Ships feature-development, feature-change, bug-fix, refactoring, codebase-exploration, commit, readme-writer, and ask skills; install the dev-pack-bundle meta-plugin to also pull in the external plugins these workflows lean on.",
   "author": {
     "name": "atker14",
     "email": "atker14@gmail.com"
   },
   "license": "MIT",
-  "keywords": ["developer", "개발", "workflow", "워크플로", "기능개발", "기능변경", "버그수정", "리팩터링", "탐색", "commit", "커밋", "readme", "ask", "질문", "qna", "feature-dev", "context7", "security", "playwright", "claude-md"]
+  "keywords": ["developer", "개발", "workflow", "워크플로", "기능개발", "기능변경", "버그수정", "리팩터링", "탐색", "commit", "커밋", "readme", "ask", "질문", "qna", "context7", "security", "playwright", "claude-md"]
 }
