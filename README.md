@@ -24,6 +24,7 @@ Personal-Plugins/
 │   │   │   └── plugin.json         # Plugin manifest
 │   │   └── skills/                # Skills (auto-discovered)
 │   │       ├── feature-development/
+│   │       ├── feature-change/
 │   │       ├── bug-fix/
 │   │       ├── refactoring/
 │   │       ├── codebase-exploration/
@@ -94,6 +95,7 @@ pull in the external plugins these workflows lean on, install the
 | 스킬 / Skill | 설명 / Description |
 | --- | --- |
 | `feature-development` | 기능 개발 절차: 탐색 → 작성 → 검증 → 리뷰 → 반복 → 커밋. Feature workflow: explore → write → verify → review → loop → commit. |
+| `feature-change` | 기능 변경 절차: 탐색·의존처 파악 → 호환성 결정 → 변경 → 테스트·문서 갱신 → 검증 → 리뷰 → 반복 → 커밋. Change workflow: explore dependents → decide compatibility → change → update tests/docs → verify → review → loop → commit. |
 | `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증 → 리뷰 → 반복 → 커밋. Bug workflow: explore → reproduce → fix → verify → review → loop → commit. |
 | `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인 → 리뷰 → 커밋. Refactor workflow: explore → safety net → change → prove-unchanged → review → commit. |
 | `codebase-exploration` | 코드 수정 없이 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계. Understand structure/flow/impact without editing; the shared first step. |
