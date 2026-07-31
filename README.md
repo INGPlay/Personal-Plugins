@@ -28,6 +28,7 @@ Personal-Plugins/
 │   │       ├── bug-fix/
 │   │       ├── refactoring/
 │   │       ├── codebase-exploration/
+│   │       ├── behavior-check/
 │   │       ├── commit/
 │   │       ├── ask/
 │   │       └── readme-writer/
@@ -99,6 +100,7 @@ pull in the external plugins these workflows lean on, install the
 | `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증(반복) → 커밋 → 사용자 `/code-review`. Bug workflow: explore → reproduce → fix → verify (loop) → commit → hand off to your `/code-review`. |
 | `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → 사용자 `/code-review`. Refactor workflow: explore → safety net → change → prove-unchanged (loop) → commit → hand off to your `/code-review`. |
 | `codebase-exploration` | 코드 수정 없이 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계. Understand structure/flow/impact without editing; the shared first step. |
+| `behavior-check` | build/lint/test와 `/run`으로 바뀐 코드가 실제로 도는지 돌려서 확인하고, 실패하면 수정 단계로 되돌린다. 위 절차들의 공통 검증 단계(통과 기준은 절차마다 다르게 정한다). Runs build/lint/test and `/run` to prove the change actually works, looping back on failure; the shared verify step (each workflow sets its own pass criterion). |
 
 보조 스킬 / Supporting skills:
 
