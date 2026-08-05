@@ -203,10 +203,25 @@ nothing in this repo depends on them.
 
 | 도구 / Tool | 설명 / Description |
 | --- | --- |
-| [`rtk`](https://github.com/rtk-ai/rtk) | 개발 명령을 프록시해 토큰 사용을 줄이는 CLI. A CLI proxy that trims token usage on dev commands. |
 | [`@ivotoby/openapi-mcp-server`](https://github.com/ivo-toby/mcp-openapi-server) | OpenAPI 명세를 MCP 도구로 노출해 REST API를 호출하게 해주는 MCP 서버. An MCP server that exposes OpenAPI specs as MCP tools so REST APIs can be called. |
 | [`mcp-toolbox`](https://github.com/googleapis/mcp-toolbox) | 데이터베이스를 MCP 도구로 노출해주는 Google의 오픈소스 MCP 서버. Google's open-source MCP server that exposes databases as MCP tools. |
 | [`andrej-karpathy-skills`](https://github.com/multica-ai/andrej-karpathy-skills.git) | 흔한 LLM 코딩 실수를 줄이기 위한 행동 지침 모음. A set of behavioral guidelines to reduce common LLM coding mistakes. |
+
+### 컨텍스트 압축 도구를 쓰지 않는 이유 / Why no context-compression tooling
+
+- **이득이 원리적으로 확인 불가능합니다.** 이런 도구가 보고하는 절감량은 자기가
+  지운 글자 수일 뿐, 실제 청구액과는 무관합니다. 도구가 자기 효과를 증명할
+  수단을 갖고 있지 않습니다.
+- **그래서 검증 비용이 기대 이득을 넘습니다.** 제대로 재려면 리포지토리 리셋을
+  낀 교차 A/B를 여러 번 돌려야 합니다. 그만한 시간을 들일 절감폭이라는 근거가
+  지금은 없습니다.
+
+- **The gain cannot be verified in principle.** The savings these tools report
+  are just the characters they removed — unrelated to the actual bill. The tool
+  has no way to prove its own effect.
+- **So verification costs more than the expected gain.** Measuring it properly
+  means repeated cross A/B runs with repository resets. There is currently no
+  evidence the savings justify that time.
 
 ---
 
