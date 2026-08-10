@@ -201,11 +201,24 @@ nothing in this repo depends on them.
 `/plugin install`로는 설치되지 않고, 각자 별도 설치 절차를 따릅니다. 선택
 사항이며, 이 저장소의 어떤 스킬도 이 도구들에 의존하지 않습니다.
 
+### MCP 서버·스킬 / MCP servers and skills
+
 | 도구 / Tool | 설명 / Description |
 | --- | --- |
 | [`@ivotoby/openapi-mcp-server`](https://github.com/ivo-toby/mcp-openapi-server) | OpenAPI 명세를 MCP 도구로 노출해 REST API를 호출하게 해주는 MCP 서버. An MCP server that exposes OpenAPI specs as MCP tools so REST APIs can be called. |
 | [`mcp-toolbox`](https://github.com/googleapis/mcp-toolbox) | 데이터베이스를 MCP 도구로 노출해주는 Google의 오픈소스 MCP 서버. Google's open-source MCP server that exposes databases as MCP tools. |
 | [`andrej-karpathy-skills`](https://github.com/multica-ai/andrej-karpathy-skills.git) | 흔한 LLM 코딩 실수를 줄이기 위한 행동 지침 모음. A set of behavioral guidelines to reduce common LLM coding mistakes. |
+
+### 명령줄 도구 / Command-line tools
+
+Claude Code가 Bash로 직접 호출하는 도구입니다. Windows에는 기본 탑재되지 않으니
+따로 설치해야 합니다. Tools Claude Code invokes directly from Bash. Neither ships
+with Windows, so install them separately.
+
+| 도구 / Tool | 설명 / Description |
+| --- | --- |
+| [`jq`](https://jqlang.github.io/jq/) | JSON을 명령줄에서 파싱·가공하는 도구. API 응답이나 설정 파일에서 필요한 값만 뽑을 때 씁니다. A command-line JSON processor, used to pull just the needed values out of API responses or config files. |
+| [`python3`](https://www.python.org/downloads/) | 일회성 계산·데이터 가공·임시 스크립트를 돌리는 런타임. 셸 한 줄로 감당이 안 되는 작업을 맡깁니다. A runtime for one-off calculations, data munging, and throwaway scripts — for work that does not fit in a single shell line. |
 
 ### 컨텍스트 압축 도구를 쓰지 않는 이유 / Why no context-compression tooling
 
