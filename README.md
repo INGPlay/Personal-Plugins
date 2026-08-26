@@ -135,6 +135,7 @@ alone for just the skills, or this bundle to get the tools too.
 | `security-guidance` | `claude-plugins-official` |
 | `playwright` | `claude-plugins-official` |
 | `claude-md-management` | `claude-plugins-official` |
+| `frontend-design` | `claude-plugins-official` |
 
 외부 의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
 해결됩니다. The external dependencies resolve automatically once the
