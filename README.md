@@ -221,6 +221,18 @@ with Windows, so install them separately.
 | [`jq`](https://jqlang.github.io/jq/) | JSON을 명령줄에서 파싱·가공하는 도구. API 응답이나 설정 파일에서 필요한 값만 뽑을 때 씁니다. A command-line JSON processor, used to pull just the needed values out of API responses or config files. |
 | [`python3`](https://www.python.org/downloads/) | 일회성 계산·데이터 가공·임시 스크립트를 돌리는 런타임. 셸 한 줄로 감당이 안 되는 작업을 맡깁니다. A runtime for one-off calculations, data munging, and throwaway scripts — for work that does not fit in a single shell line. |
 
+### 영상·음성 도구 / Media tools
+
+영상·음성 작업에만 쓰는 명령줄 도구입니다. 위와 마찬가지로 Bash에서 직접
+호출하며 따로 설치해야 합니다. Command-line tools used only for video and audio
+work. Like the above, Claude Code calls them from Bash and they must be installed
+separately.
+
+| 도구 / Tool | 설명 / Description |
+| --- | --- |
+| [`ffmpeg`](https://ffmpeg.org/) (winget: `Gyan.FFmpeg`) | 영상·음성 변환, 잘라내기, 오디오 추출 등 미디어 처리 도구. 다운로드한 영상을 다루거나 포맷을 바꿀 때 씁니다. A media toolkit for converting, trimming, and extracting audio from video and audio files — used when handling downloaded media or changing formats. |
+| [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) (winget: `yt-dlp.yt-dlp`) | YouTube 등 웹 사이트의 영상·음성·자막을 내려받는 도구. `ffmpeg`와 함께 쓰면 포맷 병합·변환까지 한 번에 처리합니다. A downloader for video, audio, and subtitles from YouTube and other sites; paired with `ffmpeg` it merges and converts formats in one step. |
+
 ### 컨텍스트 압축 도구를 쓰지 않는 이유 / Why no context-compression tooling
 
 - **이득이 원리적으로 확인 불가능합니다.** 이런 도구가 보고하는 절감량은 자기가
