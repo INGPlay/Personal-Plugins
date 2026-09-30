@@ -27,5 +27,5 @@
   it in `.claude-plugin/marketplace.json`.
 - Keep `marketplace.json` in sync with the actual `plugins/` directories — every
   plugin directory must have a matching entry, and vice versa.
-- Documentation is bilingual (English / 한국어). Match that style in READMEs and
-  skill docs.
+- Documentation is Korean only (한국어 전용). Write READMEs and skill docs in
+  Korean; keep commands, code, and identifiers as they are.
