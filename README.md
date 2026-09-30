@@ -62,6 +62,19 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 설치 후에는 자연어("기능 추가해줘", "버그 고쳐줘", "커밋해줘" 등)나 슬래시
 명령(`/dev-pack:feature-develop` 등)으로 스킬을 실행합니다.
 
+출력 스타일:
+
+| 스타일 | 설명 |
+| --- | --- |
+| `dev-pack:fluent-korean` | 조사·어미를 생략하지 않고 뜻이 분명한 한국어 문장으로 답하게 한다. Claude Code의 코딩 지침을 유지하므로 코딩 작업에 쓴다 |
+| `dev-pack:fluent-korean-not-coding` | 위와 같은 지침에서 코딩 지침을 뺀 판. Claude가 코드를 직접 고치지 않는 작업에 쓴다 |
+
+[snflkd/fluent-korean](https://github.com/snflkd/fluent-korean)(MIT)에서
+복사했습니다(`ce8683f`). 설치만으로는 적용되지 않으며 `/config`의 Output style에서
+고르거나 `/output-style dev-pack:fluent-korean`을 입력하면 다음 메시지부터
+적용됩니다. Claude Desktop의 Claude Code는 `/config`에 이 항목이 없으므로
+`settings.json`에 `"outputStyle": "dev-pack:fluent-korean"`을 지정합니다.
+
 > **Co-Authored-By 트레일러 끄기.** `commit` 스킬은 트레일러를 다루지 않습니다.
 > Claude Code가 커밋·PR에 붙이는 `Co-Authored-By: Claude …` 줄은 설정에서
 > 끕니다. `~/.claude/settings.json`에 아래 내용을 넣으면 모든 저장소에 적용됩니다.
@@ -118,9 +131,14 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # 마켓플레이스 매니페스트(전체 플러그인 목록)
 ├── plugins/
-│   ├── dev-pack/                  # 플러그인(스킬만, 의존성 없음)
+│   ├── dev-pack/                  # 플러그인(스킬·출력 스타일, 의존성 없음)
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json        # 플러그인 매니페스트
+│   │   ├── LICENSE                # MIT(플러그인 단독 설치용 사본)
+│   │   ├── output-styles/         # 출력 스타일(자동 검색)
+│   │   │   ├── fluent-korean.md
+│   │   │   ├── fluent-korean-not-coding.md
+│   │   │   └── LICENSE-fluent-korean
 │   │   └── skills/                # 스킬(자동 검색)
 │   │       ├── feature-develop/
 │   │       ├── feature-change/
@@ -155,6 +173,7 @@ Personal-Plugins/
 │           └── plugin.json        # 플러그인 매니페스트(의존성만)
 ├── CLAUDE.md                      # Claude Code용 프로젝트 지침
 ├── CONTRIBUTING.md                # 스킬·에이전트·플러그인 추가 방법
+├── LICENSE                        # MIT
 ├── README.md
 ├── .gitattributes
 └── .gitignore
@@ -165,7 +184,7 @@ Personal-Plugins/
 루트에서 **자동 검색**되고 `hooks/`와 `.mcp.json`은 각 플러그인의 `plugin.json`에
 직접 선언합니다.
 
-지금은 `dev-pack`에 스킬만 들어 있고 스킬이 없는 메타 플러그인 `dev-pack-bundle`과
+지금은 `dev-pack`에 스킬과 출력 스타일(`output-styles/`, 자동 검색)만 들어 있고 스킬이 없는 메타 플러그인 `dev-pack-bundle`과
 `dlc`가 `dependencies`로 다른 플러그인을 함께 설치합니다.
 
 > **스킬과 의존성을 나눈 이유.** 스킬을 담은 플러그인에 `dependencies`까지
