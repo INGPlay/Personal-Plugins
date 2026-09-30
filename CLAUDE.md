@@ -29,3 +29,6 @@
   plugin directory must have a matching entry, and vice versa.
 - Documentation is Korean only (한국어 전용). Write READMEs and skill docs in
   Korean; keep commands, code, and identifiers as they are.
+- Whenever a commit bumps a plugin's `version`, tag it right after committing:
+  `claude plugin tag plugins/<name>` (creates `<name>--v<version>` and checks
+  that `plugin.json` and `marketplace.json` agree). One tag per bumped plugin.
