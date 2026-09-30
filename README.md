@@ -37,7 +37,9 @@ Personal-Plugins/
 │   │       │       └── README_template.md
 │   │       └── technical-writing/
 │   │           ├── SKILL.md
-│   │           └── LICENSE-technical-writing-ko
+│   │           ├── LICENSE-technical-writing-ko
+│   │           └── scripts/
+│   │               └── scan.sh
 │   ├── dev-pack-bundle/           # A meta-plugin (dev-pack + companion plugins; no skills)
 │   │   └── .claude-plugin/
 │   │       └── plugin.json         # Plugin manifest (dependencies only)
