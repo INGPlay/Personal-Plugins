@@ -218,6 +218,7 @@ Claude Code가 Bash에서 직접 호출하는 도구입니다. Windows에는 기
 | --- | --- |
 | [`jq`](https://jqlang.github.io/jq/) | 명령줄에서 JSON을 파싱·가공하는 도구. API 응답이나 설정 파일에서 필요한 값만 뽑을 때 씁니다 |
 | [`python3`](https://www.python.org/downloads/) | 일회성 계산·데이터 가공·임시 스크립트용 런타임. 셸 한 줄로 끝나지 않는 작업을 맡깁니다 |
+| [`gh`](https://cli.github.com/) (winget: `GitHub.cli`) | GitHub CLI. Claude Code가 PR·이슈 조회와 생성, API 호출 같은 GitHub 작업에 씁니다. 설치 후 `gh auth login`으로 한 번 로그인해야 합니다 |
 
 ### 영상·음성 도구
 
