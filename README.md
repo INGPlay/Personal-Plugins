@@ -128,12 +128,20 @@ Personal-Plugins/
 │   │       ├── refactoring/
 │   │       ├── codebase-exploration/
 │   │       ├── behavior-check/
+│   │       │   ├── SKILL.md
+│   │       │   └── scripts/
+│   │       │       └── detect.sh
 │   │       ├── commit/
+│   │       │   ├── SKILL.md
+│   │       │   └── scripts/
+│   │       │       └── precheck.sh
 │   │       ├── ask/
 │   │       ├── readme-writer/
 │   │       │   ├── SKILL.md
-│   │       │   └── assets/
-│   │       │       └── README_template.md
+│   │       │   ├── assets/
+│   │       │   │   └── README_template.md
+│   │       │   └── scripts/
+│   │       │       └── collect.sh
 │   │       └── technical-writing/
 │   │           ├── SKILL.md
 │   │           ├── LICENSE-technical-writing-ko
