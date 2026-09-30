@@ -31,10 +31,13 @@ Personal-Plugins/
 │   │       ├── behavior-check/
 │   │       ├── commit/
 │   │       ├── ask/
-│   │       └── readme-writer/
+│   │       ├── readme-writer/
+│   │       │   ├── SKILL.md
+│   │       │   └── assets/
+│   │       │       └── README_template.md
+│   │       └── technical-writing/
 │   │           ├── SKILL.md
-│   │           └── assets/
-│   │               └── README_template.md
+│   │           └── LICENSE-technical-writing-ko
 │   ├── dev-pack-bundle/           # A meta-plugin (dev-pack + companion plugins; no skills)
 │   │   └── .claude-plugin/
 │   │       └── plugin.json         # Plugin manifest (dependencies only)
@@ -109,6 +112,7 @@ pull in the external plugins these workflows lean on, install the
 | `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 커밋 단계에서 사용(그 뒤 사용자가 `/code-review`). Commits changes as `type: <Korean summary>`; used as the commit step of the workflows above, before you run `/code-review`. |
 | `ask` | 현재 코드베이스에 대한 질문에 코드를 근거(`file:line`)로 답변한다. 모호한 질문은 선택지로 좁힌 뒤 답하며, 코드는 수정하지 않는다. Answers questions about the current codebase with `file:line` evidence; narrows ambiguous questions via choices, read-only. |
 | `readme-writer` | 저장소를 직접 읽어 사실 기반으로 `README.md`를 작성·갱신한다. Reads the repo and drafts/updates a fact-based `README.md`. |
+| `technical-writing` | 한글 기술 문서·보고서·양식 문구의 번역투·AI 티를 걷어내고 문체를 한 가지로 통일한다. 결함리포트 응답 같은 엑셀/표 셀의 개조식 규칙 포함. [joshyeom/technical-writing-ko](https://github.com/joshyeom/technical-writing-ko)(MIT) 기반. Polishes Korean technical docs, reports, and form-cell text: strips translationese and AI tells and unifies the register, with rules for terse form cells such as defect-report responses. Adapted from joshyeom/technical-writing-ko (MIT). |
 
 각 스킬은 설치 후 자연어(예: "기능 추가해줘", "버그 고쳐줘", "커밋해줘") 또는
 슬래시 명령(`/dev-pack:feature-develop` 등)으로 실행합니다.
