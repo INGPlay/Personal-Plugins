@@ -100,9 +100,11 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | `claude-md-management` | `claude-plugins-official` |
 | `frontend-design` | `claude-plugins-official` |
 | `humanize-korean` | `im-not-ai` |
+| `drawio` | `drawio` |
 
-외부 의존성은 `claude-plugins-official`과 `im-not-ai` 마켓플레이스를 미리 추가해
-둬야 자동으로 해결됩니다(`/plugin marketplace add epoko77-ai/im-not-ai`).
+외부 의존성은 `claude-plugins-official`, `im-not-ai`, `drawio` 마켓플레이스를 미리
+추가해 둬야 자동으로 해결됩니다(`/plugin marketplace add epoko77-ai/im-not-ai`,
+`/plugin marketplace add jgraph/drawio-mcp`).
 
 ```bash
 /plugin install dev-pack-bundle@Personal-Plugins
