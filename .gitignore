@@ -18,3 +18,6 @@ tmp/
 # Local Claude Code state (do not commit installed/runtime data)
 .claude/
 .serena
+
+# Plugin eval results
+plugins/*/evals/results/

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: "explore-02-impact"
+context:
+  scaffold_script: "./setup.sh"
