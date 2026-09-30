@@ -121,6 +121,19 @@ Once installed, invoke a skill in natural language (e.g. "add a feature", "fix
 this bug", "commit this") or via its slash command
 (`/dev-pack:feature-develop`, etc.).
 
+> **Co-Authored-By 트레일러 끄기.** `commit` 스킬은 트레일러를 다루지 않습니다.
+> Claude Code가 커밋·PR에 붙이는 `Co-Authored-By: Claude …` 줄은 설정으로
+> 끕니다. `~/.claude/settings.json`에 아래를 넣으면 모든 저장소에 적용됩니다.
+>
+> **Turning off the Co-Authored-By trailer.** The `commit` skill does not handle
+> the trailer. Turn off the `Co-Authored-By: Claude …` line Claude Code adds to
+> commits and PRs in settings; add this to `~/.claude/settings.json` to apply it
+> to every repository.
+>
+> ```json
+> "attribution": { "commit": "", "pr": "", "sessionUrl": false }
+> ```
+
 ### `dev-pack-bundle`
 
 `dev-pack`과 그 절차가 활용하는 외부 플러그인을 한 번에 설치하는 메타 플러그인.
