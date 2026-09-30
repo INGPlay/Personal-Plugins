@@ -140,10 +140,12 @@ alone for just the skills, or this bundle to get the tools too.
 | `playwright` | `claude-plugins-official` |
 | `claude-md-management` | `claude-plugins-official` |
 | `frontend-design` | `claude-plugins-official` |
+| `humanize-korean` | `im-not-ai` |
 
-외부 의존성은 `claude-plugins-official` 마켓플레이스가 미리 추가돼 있어야 자동으로
-해결됩니다. The external dependencies resolve automatically once the
-`claude-plugins-official` marketplace has been added.
+외부 의존성은 `claude-plugins-official`과 `im-not-ai` 마켓플레이스가 미리 추가돼
+있어야 자동으로 해결됩니다(`/plugin marketplace add epoko77-ai/im-not-ai`). The
+external dependencies resolve automatically once the `claude-plugins-official`
+and `im-not-ai` marketplaces have been added.
 
 ```bash
 /plugin install dev-pack-bundle@Personal-Plugins
