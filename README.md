@@ -49,6 +49,7 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → 사용자 `/code-review` |
 | `codebase-exploration` | 코드를 고치지 않고 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계 |
 | `behavior-check` | build/lint/test와 `/run`으로 바뀐 코드가 실제로 도는지 확인하고 실패하면 수정 단계로 되돌린다. 위 절차들의 공통 검증 단계(통과 기준은 절차마다 다르다) |
+| `subagent-delegation` | 큰 작업을 태스크로 나눠 서브에이전트에게 맡긴다. 계획 승인 → 웨이브마다 워크트리 병렬 구현 → 태스크 리뷰·수정 루프 → cherry-pick 통합 → 최종 검증. 기능 개발·기능 변경·리팩터링·버그 수정(원인 확정 후)의 코드 작성 단계에서 규모가 크면 호출된다. `worktree.baseRef: "head"` 설정이 필요하다 |
 
 보조 스킬:
 
@@ -58,6 +59,13 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | `ask` | 현재 코드베이스에 대한 질문에 코드 근거(`file:line`)를 들어 답한다. 모호한 질문은 선택지로 좁혀 묻고 코드는 고치지 않는다 |
 | `readme-writer` | 저장소를 직접 읽어 사실에 근거한 `README.md`를 작성·갱신한다. `humanize-korean`이 설치돼 있으면 한국어 본문을 `humanize-scan`으로 점검한다 |
 | `technical-writing` | 한글 기술 문서·보고서·양식 문구에서 번역투와 AI 티를 걷어내고 문체를 하나로 맞춘다. 결함리포트 응답처럼 엑셀/표 셀에 들어가는 개조식 규칙도 담았다. [joshyeom/technical-writing-ko](https://github.com/joshyeom/technical-writing-ko)(MIT) 기반 |
+
+서브에이전트:
+
+| 에이전트 | 설명 |
+| --- | --- |
+| `implementer` | `subagent-delegation`의 구현 담당. 격리된 워크트리에서 태스크 하나를 구현·검증·커밋한다 |
+| `task-reviewer` | `subagent-delegation`의 리뷰 담당. 태스크 브랜치의 diff를 스펙 준수와 품질 기준으로 판정하며 코드는 고치지 않는다 |
 
 설치 후에는 자연어("기능 추가해줘", "버그 고쳐줘", "커밋해줘" 등)나 슬래시
 명령(`/dev-pack:feature-develop` 등)으로 스킬을 실행합니다.
@@ -133,10 +141,13 @@ Personal-Plugins/
 ├── .claude-plugin/
 │   └── marketplace.json           # 마켓플레이스 매니페스트(전체 플러그인 목록)
 ├── plugins/
-│   ├── dev-pack/                  # 플러그인(스킬·출력 스타일, 의존성 없음)
+│   ├── dev-pack/                  # 플러그인(스킬·에이전트·출력 스타일, 의존성 없음)
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json        # 플러그인 매니페스트
 │   │   ├── LICENSE                # MIT(플러그인 단독 설치용 사본)
+│   │   ├── agents/                # 서브에이전트(자동 검색)
+│   │   │   ├── implementer.md
+│   │   │   └── task-reviewer.md
 │   │   ├── output-styles/         # 출력 스타일(자동 검색)
 │   │   │   ├── fluent-korean.md
 │   │   │   ├── fluent-korean-not-coding.md
@@ -151,6 +162,10 @@ Personal-Plugins/
 │   │       │   ├── SKILL.md
 │   │       │   └── scripts/
 │   │       │       └── detect.sh
+│   │       ├── subagent-delegation/
+│   │       │   ├── SKILL.md
+│   │       │   └── scripts/
+│   │       │       └── preflight.sh
 │   │       ├── commit/
 │   │       │   ├── SKILL.md
 │   │       │   └── scripts/
@@ -186,7 +201,7 @@ Personal-Plugins/
 루트에서 **자동 검색**되고 `hooks/`와 `.mcp.json`은 각 플러그인의 `plugin.json`에
 직접 선언합니다.
 
-지금은 `dev-pack`에 스킬과 출력 스타일(`output-styles/`, 자동 검색)만 들어 있고 스킬이 없는 메타 플러그인 `dev-pack-bundle`과
+지금은 `dev-pack`에 스킬·서브에이전트와 출력 스타일(`output-styles/`, 자동 검색)만 들어 있고 스킬이 없는 메타 플러그인 `dev-pack-bundle`과
 `dlc`가 `dependencies`로 다른 플러그인을 함께 설치합니다.
 
 > **스킬과 의존성을 나눈 이유.** 스킬을 담은 플러그인에 `dependencies`까지
