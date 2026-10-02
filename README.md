@@ -216,21 +216,34 @@ Personal-Plugins/
 Claude Code가 Bash에서 직접 호출하는 도구입니다. Windows에는 기본으로 들어 있지
 않으니 따로 설치해야 합니다.
 
-| 도구 | 설명 |
-| --- | --- |
-| [`jq`](https://jqlang.github.io/jq/) | 명령줄에서 JSON을 파싱·가공하는 도구. API 응답이나 설정 파일에서 필요한 값만 뽑을 때 씁니다 |
-| [`python3`](https://www.python.org/downloads/) | 일회성 계산·데이터 가공·임시 스크립트용 런타임. 셸 한 줄로 끝나지 않는 작업을 맡깁니다 |
-| [`gh`](https://cli.github.com/) (winget: `GitHub.cli`) | GitHub CLI. Claude Code가 PR·이슈 조회와 생성, API 호출 같은 GitHub 작업에 씁니다. 설치 후 `gh auth login`으로 한 번 로그인해야 합니다 |
+| 도구 | 설치 | 설명 |
+| --- | --- | --- |
+| [`jq`](https://jqlang.github.io/jq/) | `winget install jqlang.jq` | 명령줄에서 JSON을 파싱·가공하는 도구. API 응답이나 설정 파일에서 필요한 값만 뽑을 때 씁니다 |
+| [`python3`](https://www.python.org/downloads/) | `winget install Python.Python.3.13` | 일회성 계산·데이터 가공·임시 스크립트용 런타임. 셸 한 줄로 끝나지 않는 작업을 맡깁니다 |
+| [`gh`](https://cli.github.com/) | `winget install GitHub.cli` | GitHub CLI. Claude Code가 PR·이슈 조회와 생성, API 호출 같은 GitHub 작업에 씁니다. 설치 후 `gh auth login`으로 한 번 로그인해야 합니다 |
+| [`markitdown`](https://github.com/microsoft/markitdown) | `pip install "markitdown[all]"` | docx·pptx·xlsx 등 오피스 문서를 Markdown으로 변환하는 도구. Claude Code의 Read 도구가 읽지 못하는 오피스 문서를 다룰 때 씁니다 |
+| [`pyhwp`](https://github.com/mete0r/pyhwp) | `pip install --pre pyhwp six` | 한글(HWP) 문서에서 텍스트를 뽑는 `hwp5txt`를 제공합니다. 베타 버전만 배포되어 `--pre`가 필요하고, 의존성에서 빠진 `six`를 함께 설치해야 실행됩니다. HWP 5.0 형식(.hwp)만 읽으며 .hwpx는 읽지 못합니다 |
+| [`ffmpeg`](https://ffmpeg.org/) | `winget install Gyan.FFmpeg` | 영상·음성 변환, 자르기, 오디오 추출 등을 하는 미디어 처리 도구. 내려받은 영상을 다루거나 포맷을 바꿀 때 씁니다 |
+| [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) | `winget install yt-dlp.yt-dlp` | YouTube 등 웹 사이트에서 영상·음성·자막을 내려받는 도구. `ffmpeg`와 함께 쓰면 포맷 병합과 변환까지 한 번에 합니다 |
 
-### 영상·음성 도구
+### 전역 CLAUDE.md 설정
 
-이 도구들도 따로 설치해야 합니다. 영상·음성 작업에만 쓰는 명령줄 도구이며 위
-도구처럼 Bash에서 직접 호출합니다.
+위 도구들은 설치만 해서는 Claude가 찾아 쓰지 않습니다. 전역 `~/.claude/CLAUDE.md`를
+다음과 같이 작성해 두면 Claude가 작업 환경을 알고 상황에 맞는 도구를 고릅니다.
+`pdftotext`는 Git for Windows에 포함되어 있어서 따로 설치하지 않습니다. 마지막 줄의
+`@andrej-karpathy-skills.md`는 같은 폴더에 둔
+[`andrej-karpathy-skills`](https://github.com/multica-ai/andrej-karpathy-skills.git)
+지침 파일을 불러옵니다.
 
-| 도구 | 설명 |
-| --- | --- |
-| [`ffmpeg`](https://ffmpeg.org/) (winget: `Gyan.FFmpeg`) | 영상·음성 변환, 자르기, 오디오 추출 등을 하는 미디어 처리 도구. 내려받은 영상을 다루거나 포맷을 바꿀 때 씁니다 |
-| [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) (winget: `yt-dlp.yt-dlp`) | YouTube 등 웹 사이트에서 영상·음성·자막을 내려받는 도구. `ffmpeg`와 함께 쓰면 포맷 병합과 변환까지 한 번에 합니다 |
+```
+Korean Response
+OS : Windows 11
+CLI : Git Bash (prefer), PowerShell
+Tool : jq, gh, python, ffmpeg, yt-dlp
+Doc reader : pdftotext (pdf), markitdown (docx/pptx/xlsx), hwp5txt (hwp only, not hwpx)
+
+@andrej-karpathy-skills.md
+```
 
 ### 컨텍스트 압축 도구를 쓰지 않는 이유
 
