@@ -1,0 +1,9 @@
+{
+  "outputStyle": "dev-pack:fluent-korean",
+  "permissions": {
+    "allow": [
+      "Bash(claude plugin marketplace add:*)",
+      "Bash(claude plugin install:*)"
+    ]
+  }
+}
