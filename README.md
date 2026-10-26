@@ -49,7 +49,7 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → 사용자 `/code-review` |
 | `codebase-exploration` | 코드를 고치지 않고 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계 |
 | `behavior-check` | build/lint/test와 `/run`으로 바뀐 코드가 실제로 도는지 확인하고 실패하면 수정 단계로 되돌린다. 위 절차들의 공통 검증 단계(통과 기준은 절차마다 다르다) |
-| `subagent-delegation` | 큰 작업을 태스크로 나눠 서브에이전트에게 맡긴다. 계획 승인 → 웨이브마다 워크트리 병렬 구현 → 태스크 리뷰·수정 루프 → cherry-pick 통합 → 최종 검증. 기능 개발·기능 변경·리팩터링·버그 수정(원인 확정 후)의 코드 작성 단계에서 규모가 크면 호출된다. `worktree.baseRef: "head"` 설정이 필요하다 |
+| `subagent-delegation` | 큰 작업을 태스크로 나눠 서브에이전트에게 맡긴다. 계획 승인 → 현재 작업 트리에서 태스크별 구현(기본은 순차, 검증이 독립적이면 병렬) → 태스크 리뷰·수정 루프 → 태스크별 커밋 → 최종 검증. 기능 개발·기능 변경·리팩터링·버그 수정(원인 확정 후)의 코드 작성 단계에서 규모가 크면 호출된다 |
 
 보조 스킬:
 
@@ -64,8 +64,8 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 
 | 에이전트 | 설명 |
 | --- | --- |
-| `implementer` | `subagent-delegation`의 구현 담당. 격리된 워크트리에서 태스크 하나를 구현·검증·커밋한다 |
-| `task-reviewer` | `subagent-delegation`의 리뷰 담당. 태스크 브랜치의 diff를 스펙 준수와 품질 기준으로 판정하며 코드는 고치지 않는다 |
+| `implementer` | `subagent-delegation`의 구현 담당. 현재 작업 트리에서 소유 파일만 고쳐 태스크 하나를 구현·검증한다. 커밋은 오케스트레이터가 한다 |
+| `task-reviewer` | `subagent-delegation`의 리뷰 담당. 작업 트리에 남은 소유 파일의 diff를 스펙 준수와 품질 기준으로 판정하며 코드는 고치지 않는다 |
 
 설치 후에는 자연어("기능 추가해줘", "버그 고쳐줘", "커밋해줘" 등)나 슬래시
 명령(`/dev-pack:feature-develop` 등)으로 스킬을 실행합니다.
@@ -163,9 +163,7 @@ Personal-Plugins/
 │   │       │   └── scripts/
 │   │       │       └── detect.sh
 │   │       ├── subagent-delegation/
-│   │       │   ├── SKILL.md
-│   │       │   └── scripts/
-│   │       │       └── preflight.sh
+│   │       │   └── SKILL.md
 │   │       ├── commit/
 │   │       │   ├── SKILL.md
 │   │       │   └── scripts/
