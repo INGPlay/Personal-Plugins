@@ -56,7 +56,7 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | 스킬 | 설명 |
 | --- | --- |
 | `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 커밋 단계에서 쓰며 그 뒤 사용자가 `/code-review`를 실행한다 |
-| `ask` | 현재 코드베이스를 묻는 질문에 코드 근거(`file:line`)를 들어 답한다. 모호한 질문은 선택지로 좁혀 묻고 코드는 고치지 않는다 |
+| `ask` | 값 하나·위치 하나처럼 한 지점에서 끝나는 코드베이스 질문에 코드 근거(`file:line`)를 들어 답한다. 여러 파일에 걸친 흐름·영향도 질문은 `codebase-exploration`이 맡는다. 모호한 질문은 선택지로 좁혀 묻고 코드는 고치지 않는다 |
 | `readme-writer` | 저장소를 직접 읽어 사실에 근거한 `README.md`를 작성·갱신한다. `humanize-korean`이 설치돼 있으면 한국어 본문을 `humanize-scan`으로 점검한다 |
 | `technical-writing` | 한글 기술 문서·보고서·양식 문구에서 번역투와 AI 티를 걷어내고 문체를 하나로 맞춘다. 결함리포트 응답처럼 엑셀/표 셀에 들어가는 개조식 규칙도 담았다. [joshyeom/technical-writing-ko](https://github.com/joshyeom/technical-writing-ko)(MIT) 기반 |
 
