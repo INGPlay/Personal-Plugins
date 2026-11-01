@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: "bc-03-real-cmd"
+context:
+  scaffold_script: "./setup.sh"
