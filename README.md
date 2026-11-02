@@ -33,6 +33,13 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 
 ## 제공 플러그인
 
+| 플러그인 | 설명 |
+| --- | --- |
+| [`dev-pack`](#dev-pack) | 기능 개발·변경, 버그 수정, 리팩터링 절차와 커밋·문서 작성 스킬, 한국어 출력 스타일 |
+| [`dev-pack-bundle`](#dev-pack-bundle) | `dev-pack`과 그 절차에서 쓰는 외부 플러그인을 한 번에 설치하는 메타 플러그인 |
+| [`dlc`](#dlc) | OpenAI `codex` 플러그인을 의존성으로 받아 오는 메타 플러그인 |
+| [`dev-env-windows`](#dev-env-windows) | Windows 11 + Git Bash 환경용 셸 규칙과 `PYTHONUTF8=1`을 세션 시작 시 적용하는 훅 |
+
 ### `dev-pack`
 
 개발 워크플로 패키지입니다. 아래 스킬을 직접 제공하며 `dependencies`는 없습니다.
