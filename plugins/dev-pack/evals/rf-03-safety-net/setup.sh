@@ -38,3 +38,8 @@ exports.summary = (items) => ({
   invoice: invoiceTotal(items, 10),
 });
 JSEOF
+git init -q
+git config user.name eval
+git config user.email eval@example.com
+git add -A
+git commit -qm "init"

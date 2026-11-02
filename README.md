@@ -50,10 +50,10 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 
 | 스킬 | 설명 |
 | --- | --- |
-| `feature-develop` | 기능 개발 절차: 탐색 → 작성 → 검증(반복) → 커밋 → 사용자 `/code-review` |
-| `feature-change` | 기능 변경 절차: 탐색·의존처 파악 → 호환성 결정 → 변경 → 테스트·문서 갱신 → 검증(반복) → 커밋 → 사용자 `/code-review` |
-| `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증(반복) → 커밋 → 사용자 `/code-review` |
-| `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → 사용자 `/code-review` |
+| `feature-develop` | 기능 개발 절차: 탐색 → 작성 → 검증(반복) → 커밋 → `/code-review` 실행 |
+| `feature-change` | 기능 변경 절차: 탐색·의존처 파악 → 호환성 결정 → 변경 → 테스트·문서 갱신 → 검증(반복) → 커밋 → `/code-review` 실행 |
+| `bug-fix` | 버그 수정 절차: 탐색 → 재현·원인 → 수정 → 검증(반복) → 커밋 → `/code-review` 실행 |
+| `refactoring` | 리팩터링 절차: 탐색 → 안전망 → 변경 → 동작 동일 확인(반복) → 커밋 → `/code-review` 실행 |
 | `codebase-exploration` | 코드를 고치지 않고 구조·흐름·영향 범위를 파악한다. 위 절차들의 공통 1단계 |
 | `behavior-check` | build/lint/test와 `/run`으로 바뀐 코드가 실제로 도는지 확인하고 실패하면 수정 단계로 되돌린다. 위 절차들의 공통 검증 단계(통과 기준은 절차마다 다르다) |
 | `subagent-delegation` | 큰 작업을 태스크로 나눠 서브에이전트에게 맡긴다. 계획 승인 → 현재 작업 트리에서 태스크별 구현(기본은 순차, 검증이 독립적이면 병렬) → 태스크 리뷰·수정 루프 → 태스크별 커밋 → 최종 검증. 기능 개발·기능 변경·리팩터링·버그 수정(원인 확정 후)의 코드 작성 단계에서 규모가 크면 호출된다 |
@@ -62,7 +62,7 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 
 | 스킬 | 설명 |
 | --- | --- |
-| `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 커밋 단계에서 쓰며 그 뒤 사용자가 `/code-review`를 실행한다 |
+| `commit` | 변경사항을 conventional commit(`type: 한국어 설명`)으로 커밋한다. 위 절차들의 커밋 단계에서 쓰며 그 뒤 `/code-review`를 실행한다 |
 | `ask` | 값 하나·위치 하나처럼 한 지점에서 끝나는 코드베이스 질문에 코드 근거(`file:line`)를 들어 답한다. 여러 파일에 걸친 흐름·영향도 질문은 `codebase-exploration`이 맡는다. 모호한 질문은 선택지로 좁혀 묻고 코드는 고치지 않는다 |
 | `readme-writer` | 저장소를 직접 읽어 사실에 근거한 `README.md`를 작성·갱신한다. `humanize-korean`이 설치돼 있으면 한국어 본문을 `humanize-scan`으로 점검한다 |
 | `technical-writing` | 한글 기술 문서·보고서·양식 문구에서 번역투와 AI 티를 걷어내고 문체를 하나로 맞춘다. 결함리포트 응답처럼 엑셀/표 셀에 들어가는 개조식 규칙도 담았다. [joshyeom/technical-writing-ko](https://github.com/joshyeom/technical-writing-ko)(MIT) 기반 |
