@@ -20,6 +20,7 @@ echo "=== 클론 URL ==="
 git remote get-url origin 2>/dev/null || echo "(리모트 없음: 자리표시자 유지)"
 
 echo "=== 최상위 항목 ==="
+# shellcheck disable=SC2010  # 출력만 하는 목록이라 파일명 파싱 문제가 없다.
 ls -Ap | grep -v '^\.git/$'
 
 list "의존성 매니페스트" -name package.json -o -name requirements.txt -o -name pyproject.toml -o -name setup.py \

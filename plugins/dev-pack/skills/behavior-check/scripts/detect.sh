@@ -41,6 +41,7 @@ fi
 echo "=== CI에서 실행하는 명령 ==="
 CI=$(ls .github/workflows/*.yml .github/workflows/*.yaml .gitlab-ci.yml 2>/dev/null)
 if [ -n "$CI" ]; then
+  # shellcheck disable=SC2086  # CI는 파일 목록이므로 단어 분리가 의도된 동작이다.
   grep -nE '^\s*(- )?run:|^\s*script:' $CI
 else
   echo "(없음)"
