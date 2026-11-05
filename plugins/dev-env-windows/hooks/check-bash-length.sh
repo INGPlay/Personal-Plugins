@@ -14,9 +14,17 @@ esac
 
 limit=7100
 
+# 잘림은 바이트가 아니라 문자 수로 일어난다. LANG이 없으면 ${#input}이 바이트를 세어 한글이 3배로 잡힌다.
+LC_ALL=C.UTF-8
+
 IFS= read -r -d '' input
-quotes=${input//[^\']/}
-estimate=$((${#input} + ${#quotes} * 4))
+estimate=${#input}
+
+# 패턴 치환은 입력 길이의 제곱에 비례해 느려지므로, 이미 기준을 넘긴 입력에는 돌리지 않는다.
+if [ "$estimate" -le "$limit" ]; then
+  quotes=${input//[^\']/}
+  estimate=$((estimate + ${#quotes} * 4))
+fi
 
 if [ "$estimate" -le "$limit" ]; then
   exit 0
