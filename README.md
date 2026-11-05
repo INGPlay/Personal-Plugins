@@ -145,7 +145,7 @@ Windows 11 + Git Bash 환경에 맞춰 Claude Code의 셸 사용 방식을 정�
 플러그인입니다. 스킬 없이 `SessionStart` 훅(`hooks/session-start.sh`) 하나로
 동작합니다.
 
-- `hooks/git-bash-shell.md`의 셸 규칙(Git Bash 우선 사용, Git Bash 경로 형식, LF 줄바꿈)을 세션 컨텍스트에 넣습니다.
+- `hooks/git-bash-shell.md`의 셸 규칙(Git Bash 우선 사용, Git Bash 경로 형식, LF 줄바꿈, Bash 명령 길이 제한)을 세션 컨텍스트에 넣습니다.
 - `CLAUDE_ENV_FILE`에 `PYTHONUTF8=1`을 한 번만 기록해, 이후 Bash 명령에서 Python의 한글 입출력이 cp949로 깨지지 않게 합니다.
 
 Windows(Git Bash)가 아닌 환경에서는 훅이 아무것도 하지 않으므로, 여러 OS에서 설정을 동기화해도 macOS나 Linux 세션에는 영향이 없습니다.
