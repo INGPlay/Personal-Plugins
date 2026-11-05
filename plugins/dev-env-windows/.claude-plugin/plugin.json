@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "dev-env-windows",
   "displayName": "Dev Env Windows",
-  "version": "0.1.0",
-  "description": "Windows 11 + Git Bash 개발 환경 플러그인. 세션 시작 시 셸 규칙(Git Bash 우선, Git Bash 경로, LF 줄바꿈)을 컨텍스트에 넣고, Python 한글 깨짐을 막도록 Bash 명령에 PYTHONUTF8=1을 설정한다. Windows/Git Bash environment: injects shell rules at session start and sets PYTHONUTF8=1 for Bash commands.",
+  "version": "0.2.0",
+  "description": "Windows 11 + Git Bash 개발 환경 플러그인. 세션 시작 시 셸 규칙(Git Bash 우선, Git Bash 경로, LF 줄바꿈, Bash 명령 길이 제한)을 컨텍스트에 넣고, Python 한글 깨짐을 막도록 Bash 명령에 PYTHONUTF8=1을 설정하며, 잘릴 길이의 Bash 명령을 실행 전에 차단한다. Windows/Git Bash environment: injects shell rules at session start, sets PYTHONUTF8=1 for Bash commands, and blocks Bash commands long enough to be truncated.",
   "author": {
     "name": "atker14",
     "email": "atker14@gmail.com"

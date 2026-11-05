@@ -38,7 +38,7 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 | [`dev-pack`](#dev-pack) | 기능 개발·변경, 버그 수정, 리팩터링 절차와 커밋·문서 작성 스킬, 한국어 출력 스타일 |
 | [`dev-pack-bundle`](#dev-pack-bundle) | `dev-pack`과 그 절차에서 쓰는 외부 플러그인을 한 번에 설치하는 메타 플러그인 |
 | [`dlc`](#dlc) | OpenAI `codex` 플러그인을 의존성으로 받아 오는 메타 플러그인 |
-| [`dev-env-windows`](#dev-env-windows) | Windows 11 + Git Bash 환경용 셸 규칙과 `PYTHONUTF8=1`을 세션 시작 시 적용하는 훅 |
+| [`dev-env-windows`](#dev-env-windows) | Windows 11 + Git Bash 환경용 셸 규칙과 `PYTHONUTF8=1`을 세션 시작 시 적용하고, 잘릴 길이의 Bash 명령을 차단하는 훅 |
 
 ### `dev-pack`
 
@@ -142,11 +142,12 @@ OpenAI의 `codex` 플러그인을 묶는 메타 플러그인입니다. 자체 �
 ### `dev-env-windows`
 
 Windows 11 + Git Bash 환경에 맞춰 Claude Code의 셸 사용 방식을 정하는
-플러그인입니다. 스킬 없이 `SessionStart` 훅(`hooks/session-start.sh`) 하나로
+플러그인입니다. 스킬 없이 `SessionStart` 훅(`hooks/session-start.sh`)과 `PreToolUse` 훅(`hooks/check-bash-length.sh`)으로
 동작합니다.
 
-- `hooks/git-bash-shell.md`의 셸 규칙(Git Bash 우선 사용, Git Bash 경로 형식, LF 줄바꿈)을 세션 컨텍스트에 넣습니다.
+- `hooks/git-bash-shell.md`의 셸 규칙(Git Bash 우선 사용, Git Bash 경로 형식, LF 줄바꿈, Bash 명령 길이 제한)을 세션 컨텍스트에 넣습니다.
 - `CLAUDE_ENV_FILE`에 `PYTHONUTF8=1`을 한 번만 기록해, 이후 Bash 명령에서 Python의 한글 입출력이 cp949로 깨지지 않게 합니다.
+- Bash 명령마다 입력 JSON의 길이를 추정해, `bash -c` 문자열이 8,186자에서 잘릴 만큼 긴 명령을 실행 전에 차단합니다.
 
 Windows(Git Bash)가 아닌 환경에서는 훅이 아무것도 하지 않으므로, 여러 OS에서 설정을 동기화해도 macOS나 Linux 세션에는 영향이 없습니다.
 
@@ -213,8 +214,9 @@ Personal-Plugins/
 │       │   └── plugin.json        # 플러그인 매니페스트(hooks 선언)
 │       ├── LICENSE
 │       └── hooks/
-│           ├── hooks.json         # SessionStart 훅 정의
+│           ├── hooks.json         # SessionStart·PreToolUse 훅 정의
 │           ├── git-bash-shell.md  # 세션 시작 시 주입하는 셸 규칙
+│           ├── check-bash-length.sh # 잘릴 길이의 Bash 명령 차단(Windows에서만)
 │           └── session-start.sh   # 규칙 출력·PYTHONUTF8=1 설정(Windows에서만)
 ├── CLAUDE.md                      # Claude Code용 프로젝트 지침
 ├── CONTRIBUTING.md                # 스킬·에이전트·플러그인 추가 방법
