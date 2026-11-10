@@ -290,6 +290,23 @@ Doc reader : pdftotext (pdf), markitdown (docx/pptx/xlsx), hwp5txt (hwp only, no
 @andrej-karpathy-skills.md
 ```
 
+### Advisor 설정
+
+[advisor](https://code.claude.com/docs/en/advisor)는 더 강한 모델이 대화 전체를
+보고 작업 방향을 검토해 주는 Claude Code 기능입니다. 플러그인 `settings.json`은
+`advisorModel` 키를 무시하기 때문에 이 저장소의 플러그인으로는 켤 수 없습니다.
+사용자가 직접 설정해야 합니다.
+
+```
+/advisor fable     # 사용자 설정(advisorModel)에 저장되어 이후 세션에도 유지됩니다
+/advisor off       # 끕니다
+claude --advisor fable  # 이번 세션에만 적용합니다
+```
+
+- Anthropic API에서만 동작하며 Bedrock, Vertex AI, Foundry에서는 쓸 수 없습니다.
+- advisor 모델은 메인 모델과 같거나 더 높은 등급이어야 합니다.
+- 서브에이전트는 메인 세션에 설정된 advisor를 그대로 물려받습니다.
+
 ### 컨텍스트 압축 도구를 쓰지 않는 이유
 
 - **이득을 원리상 확인할 수 없습니다.** 이런 도구가 보여 주는 절감량은 자기가
