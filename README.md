@@ -147,6 +147,7 @@ Windows 11 + Git Bash 환경에 맞춰 Claude Code의 셸 사용 방식을 정�
 
 - `hooks/git-bash-shell.md`의 셸 규칙(Git Bash 우선 사용, Git Bash 경로 형식, LF 줄바꿈, Bash 명령 길이 제한)을 세션 컨텍스트에 넣습니다.
 - `CLAUDE_ENV_FILE`에 `PYTHONUTF8=1`을 한 번만 기록해, 이후 Bash 명령에서 Python의 한글 입출력이 cp949로 깨지지 않게 합니다.
+- `CLAUDE_ENV_FILE`에 `pdftotext` 래퍼 함수를 한 번만 기록해, xpdf 계열 `pdftotext`가 한글을 출력하지 못하는 문제(기본 인코딩 Latin1)를 `-enc UTF-8`로 막습니다.
 - Bash 명령마다 입력 JSON의 길이를 추정해, `bash -c` 문자열이 8,186자에서 잘릴 만큼 긴 명령을 실행 전에 차단합니다.
 
 Windows(Git Bash)가 아닌 환경에서는 훅이 아무것도 하지 않으므로, 여러 OS에서 설정을 동기화해도 macOS나 Linux 세션에는 영향이 없습니다.
@@ -275,7 +276,7 @@ Claude Code가 Bash에서 직접 호출하는 도구입니다. Windows에는 기
 
 위 도구들은 설치만 해서는 Claude가 찾아 쓰지 않습니다. 전역 `~/.claude/CLAUDE.md`를
 다음과 같이 작성해 두면 Claude가 작업 환경을 알고 상황에 맞는 도구를 고릅니다.
-`pdftotext`는 Git for Windows에 포함되어 있어서 따로 설치하지 않습니다. 마지막 줄의
+`pdftotext`는 MSYS2(`/ucrt64/bin`)에 포함된 xpdf 계열이어서 따로 설치하지 않으며, 한글 PDF는 `-enc UTF-8`을 붙여야 읽힙니다(`dev-env-windows` 플러그인이 자동으로 붙임). 마지막 줄의
 `@andrej-karpathy-skills.md`는 같은 폴더에 둔
 [`andrej-karpathy-skills`](https://github.com/multica-ai/andrej-karpathy-skills.git)
 지침 파일을 불러옵니다.
