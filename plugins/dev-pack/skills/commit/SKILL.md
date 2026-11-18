@@ -1,7 +1,7 @@
 ---
 name: commit
 description: '변경사항을 conventional commit 형식(type: 한국어 설명)으로 커밋한다. 사용자가 "커밋해줘", "커밋", "커밋 만들어줘" 등 자연어로 요청하거나 /dev-pack:commit 슬래시 명령을 사용할 때 적용.'
-allowed-tools: Read, Glob, Grep, Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git log:*)
+allowed-tools: Read, Glob, Grep, Bash(git status:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git log:*), Bash(bash *commit/scripts/precheck.sh*)
 ---
 
 # 커밋 (commit)
