@@ -98,6 +98,10 @@ Claude Code에 이 마켓플레이스를 추가한 뒤 플러그인을 설치합
 > "attribution": { "commit": "", "pr": "", "sessionUrl": false }
 > ```
 
+> **예약 작업과 `/loop`에서 커밋하기.** `commit` 스킬은 `allowed-tools`를 선언하므로
+> 예약 작업과 `/loop`에서는 실행 전에 확인을 요청합니다. 확인 없이 실행하려면
+> `permissions.allow`에 `Skill(dev-pack:commit)`을 추가합니다.
+
 ### `dev-pack-bundle`
 
 `dev-pack`과 그 절차에서 쓰는 외부 플러그인을 한 번에 설치하는 메타 플러그인입니다.
